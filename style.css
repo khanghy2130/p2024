@@ -14,3 +14,9 @@ body {
     position: fixed;
     z-index: -99;
 }
+
+button {
+    font-size: 30px;
+    margin: 5px;
+    margin-left: 100px;
+}
