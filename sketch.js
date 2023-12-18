@@ -1,31 +1,36 @@
+const doc = document.documentElement;
+const color1 = getComputedStyle(doc).getPropertyValue("--theme-color1");
+const color2 = getComputedStyle(doc).getPropertyValue("--theme-color2");
+
+
+function getCanvasSize(){
+    return [doc.clientWidth, doc.clientHeight * 1.2];
+}
 
 function windowResized(){
-    resizeCanvas(document.documentElement.clientWidth, document.documentElement.clientHeight);
+    const [cvWidth, cvHeight] = getCanvasSize();
+    resizeCanvas(cvWidth, cvHeight);
     ///// reset app
 }
 
 function setup() {
     let mainEle = document.getElementsByTagName("main")[0];
-    for (let i=0; i < 100; i++){
+    for (let i=0; i < 50; i++){
         mainEle.innerHTML += `<button>Button ${i}</button><br>`
     }
 
-    createCanvas(
-        document.documentElement.clientWidth, 
-        document.documentElement.clientHeight,
-        document.getElementById("bg-canvas")
-    );
+    const [cvWidth, cvHeight] = getCanvasSize();
+    createCanvas(cvWidth, cvHeight, document.getElementById("bg-canvas"));
 
 }
 
-let mx = -999, my = -999;
 let squareCount = 5;
 function draw() {
     touchCountdown--;
 
-    background(40);
+    background(color2);
     noFill();
-    stroke(0);
+    stroke(color1);
     strokeWeight(10);
     for (let y=0; y < squareCount; y++){
         for (let x=0; x < squareCount; x++){
@@ -33,7 +38,6 @@ function draw() {
         }
     }
 
-    circle(mx, my, 150);
 }
 
 let touchCountdown = 0;
@@ -41,6 +45,5 @@ function touchEnded(){
 	if (touchCountdown > 0) return;
 	else touchCountdown = 5;
 
-    mx = mouseX;
-    my = mouseY;
+    
 }
