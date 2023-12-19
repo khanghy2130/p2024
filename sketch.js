@@ -44,7 +44,7 @@ let hexes = []; // contains hexagon objects
 
 
 function getCanvasSize(){
-    return [doc.clientWidth, doc.clientHeight];
+    return [doc.clientWidth, doc.clientHeight * 1.1];
 }
 function windowResized(){
     const [cvWidth, cvHeight] = getCanvasSize();
