@@ -1,7 +1,8 @@
 :root {
-    --theme-color1: #42113c;
-    --theme-color2: #33102a;
+    --theme-color1: black;
+    --theme-color2: black;
     --text-color1: #F0F0F0;
+    --dark-background-color: #111111;
 }
 
 * {
@@ -52,4 +53,10 @@ main {
 button {
     font-size: 36px;
     margin: 25px;
+    padding: 10px;
+}
+
+p {
+    margin: 20px;
+    font-size: 28px;
 }
