@@ -24,7 +24,7 @@ const color2 = getComputedStyle(doc).getPropertyValue("--theme-color2");
 
 
 // Constants for rendering hexagons
-const SCALING_FACTOR = 0.1; // controls the hexagon size
+const SCALING_FACTOR = 0.11; // controls the hexagon size
 const BORDER_EXTEND = 1.1; // extends the border limit to include border hexes
 let TILE_SCALE, SQRT_3, HALF_SQRT_3, HALF_TILE_SCALE, SCALED_SQRT;
 let HEX_POINTS_RENDER;
@@ -173,7 +173,7 @@ function touchEnded(){
 
 
 
-// let mainEle = document.getElementsByTagName("main")[0];
-// for (let i=0; i < 50; i++){
-//     mainEle.innerHTML += `<button>Button ${i}</button><br>`
-// }
+let mainEle = document.getElementsByTagName("main")[0];
+for (let i=0; i < 10; i++){
+    mainEle.innerHTML += `<button>Button ${i}</button><br>`
+}

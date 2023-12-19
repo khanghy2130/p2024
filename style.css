@@ -12,8 +12,6 @@
 body {
     background-color: var(--theme-color2);
     color: var(--text-color1);
-    overflow-y: hidden;
-    overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -31,7 +29,7 @@ body {
     z-index: -99;
 }
 
-#shadow-div {
+/* #shadow-div {
     box-shadow: inset 0px 6vh 20px -2vh var(--theme-color2), 
         inset 0px -6vh 20px -2vh var(--theme-color1);
     position: absolute;
@@ -40,21 +38,17 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-}
+} */
 
 main {
     height: 100vh;
-    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
 button {
     font-size: 36px;
     margin: 25px;
-    margin-left: 120px;
-}
-
-p {
-    margin: 16px;
-    font-size: 32px;
 }
