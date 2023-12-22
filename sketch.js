@@ -18,7 +18,7 @@
     }
 */
 
-const SCALING_FACTOR = 0.12; // controls the hexagon size
+const SCALING_FACTOR = 0.13; // controls the hexagon size
 const BORDER_EXTEND = 1.1; // extends the border limit to include border hexes
 const COLOR_CHANGING_SPEED = 0.015;
 const PARTICLE_SPEED = 0.01;
@@ -159,7 +159,7 @@ function generateParticles(hex1, hex2){
 
 function hexTouched(hex){
     let randomHex;
-    let attemptsLeft = 20;
+    let attemptsLeft = 25;
     while (true){
         if (attemptsLeft-- < 0) return; // too long to find, cancel
         randomHex = getRandomHex();
@@ -169,7 +169,7 @@ function hexTouched(hex){
         if (randomHex.isInTransition) continue;
         // too far away? reroll
         if (dist(hex.renderPosition[0], hex.renderPosition[1], 
-            randomHex.renderPosition[0], randomHex.renderPosition[1])/TILE_SCALE > 4
+            randomHex.renderPosition[0], randomHex.renderPosition[1])/TILE_SCALE > 5
         ) continue;
         break;
     } 
