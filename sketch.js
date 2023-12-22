@@ -18,7 +18,7 @@
     }
 */
 
-const SCALING_FACTOR = 0.14; // controls the hexagon size
+const SCALING_FACTOR = 0.13; // controls the hexagon size
 const BORDER_EXTEND = 1.1; // extends the border limit to include border hexes
 const COLOR_CHANGING_SPEED = 0.015;
 const PARTICLE_SPEED = 0.01;
