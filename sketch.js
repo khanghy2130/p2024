@@ -13,19 +13,17 @@
     Particle {
         progress (0 to 1), speed,
         rotationA (0|60 + 120 * x), rotationB: 0|60,
-        pointA, pointB, arcPoint, radius
+        pointA, pointB, midpoint,
+        startAngle, radius, negArc
     }
-
-
 */
 
-const SCALING_FACTOR = 0.12; // controls the hexagon size
+const SCALING_FACTOR = 0.14; // controls the hexagon size
 const BORDER_EXTEND = 1.1; // extends the border limit to include border hexes
 const COLOR_CHANGING_SPEED = 0.015;
-const ARC_EXTENSION = 0.0; // particle arc curveness
-const PARTICLE_SPEED = 0.012;
-const PARTICLE_SPEED_RANGE = 1.2; // added % of orginal speed
-const AUTOCLICK_DELAY = 4; // in seconds
+const PARTICLE_SPEED = 0.01;
+const PARTICLE_SPEED_RANGE = 1.1; // added % of orginal speed
+const AUTOCLICK_DELAY = 3; // in seconds
 
 
 const doc = document.documentElement;
@@ -45,7 +43,7 @@ let color1, color2;
 
 
 function getCanvasSize(){
-    return [doc.clientWidth, doc.clientHeight * 1.05];
+    return [doc.clientWidth, doc.clientHeight * 1.1];
 }
 function windowResized(){
     const [cvWidth, cvHeight] = getCanvasSize();
@@ -56,7 +54,6 @@ function windowResized(){
 
 function resetApp(){
     const oldTS = TILE_SCALE;
-
     // recalculate the constants for rendering
     TILE_SCALE = min(width, height) * SCALING_FACTOR;
     SQRT_3 = Math.sqrt(3);
@@ -105,61 +102,19 @@ function resetApp(){
         }
     }
 
-    // update points in particles
-    for (let i=0; i < transitions.length; i++){
-        let particles = transitions[i].particles;
-        for (let j=0; j < particles.length; j++){
-            let pc = particles[j];
-            pc.pointA = [pc.pointA[0]/oldTS*TILE_SCALE, pc.pointA[1]/oldTS*TILE_SCALE]
-            pc.pointB = [pc.pointB[0]/oldTS*TILE_SCALE, pc.pointB[1]/oldTS*TILE_SCALE]
-            pc.arcPoint = [pc.arcPoint[0]/oldTS*TILE_SCALE, pc.arcPoint[1]/oldTS*TILE_SCALE]
-            pc.radius = pc.radius[0]/oldTS*TILE_SCALE;
+    // TS changed? end all transitions
+    if (oldTS !== TILE_SCALE){
+        for (let i=0; i < transitions.length; i++){
+            let particles = transitions[i].particles;
+            for (let j=0; j < particles.length; j++){
+                particles[j].progress = 1;
+            }
         }
     }
 
-
+    document.getElementById("mostXY").innerText = `x: ${mostX} y: ${mostY}`;
 }
 
-function additionalRotation(){
-    let factor = Math.random() > 0.5 ? 1 : -1;
-    return factor * 120 * randomInt(1, 3);
-}
-function getArcPoint(point1, point2){
-    const arcFactor = 1.01 + Math.random() * ARC_EXTENSION;
-    const distance = dist(point1.x, point1.y, point2.x, point2.y);
-    
-    // Calculate the midpoint between the given points
-    const midPoint = {
-        x: (point1.x + point2.x) / 2,
-        y: (point1.y + point2.y) / 2
-    };
-    // Calculate the vector components
-    const dx = (point2.x - point1.x) / distance;
-    const dy = (point2.y - point1.y) / distance;
-    
-    // pick random from 2 points
-    if (Math.random() > 0.5){
-        return [
-            midPoint.x + arcFactor * distance * dy,
-            midPoint.y - arcFactor * distance * dx
-        ];
-    } else {
-        return [
-            midPoint.x - arcFactor * distance * dy,
-            midPoint.y + arcFactor * distance * dx
-        ];
-    }
-}
-function pointOnArc(particle, arcPosition) {
-    // Calculate the angle corresponding to the arcPosition
-    // const startAngle = Math.atan2(arcStartPoint.y - midPoint.y, arcStartPoint.x - midPoint.x);
-    // const endAngle = startAngle + (2 * Math.PI * arcPosition);
-    
-    return [
-        particle.arcPoint[0] + particle.radius * Math.cos(arcPosition*10),
-        particle.arcPoint[1] + particle.radius * Math.sin(arcPosition*10)
-    ];
-}
 
 function generateParticles(hex1, hex2){
     let h1rp = hex1.renderPosition;
@@ -188,24 +143,23 @@ function generateParticles(hex1, hex2){
         const b = infoB[i];
         const pc = {
             pointA: [a[0], a[1]], 
-            rotationA: a[2] + additionalRotation(),
+            rotationA: a[2] + randomInt(-2,3) * 120,
             pointB: [b[0], b[1]], 
             rotationB: b[2],
             progress: 0,
-            speed: PARTICLE_SPEED * (1 + Math.random() * PARTICLE_SPEED_RANGE)
+            speed: PARTICLE_SPEED * (1 + Math.random() * PARTICLE_SPEED_RANGE),
+            negArc: Math.random() > 0.5 ? 1 : -1
         };
-        pc.arcPoint = getArcPoint(
-            {x: pc.pointA[0], y: pc.pointA[1]}, 
-            {x: pc.pointB[0], y: pc.pointB[1]}
-        );
-        pc.radius = dist(pc.arcPoint[0], pc.arcPoint[1], pc.pointA[0], pc.pointA[1]);
+        pc.midpoint = [(pc.pointA[0] + pc.pointB[0])/2, (pc.pointA[1] + pc.pointB[1])/2];
+        pc.startAngle = 90 - atan2(pc.pointA[1] - pc.midpoint[1], pc.pointA[0] - pc.midpoint[0]);
+        pc.radius = dist(pc.midpoint[0], pc.midpoint[1], pc.pointA[0], pc.pointA[1]);
         return pc;
     });
 }
 
 function hexTouched(hex){
     let randomHex;
-    let attemptsLeft = 15;
+    let attemptsLeft = 20;
     while (true){
         if (attemptsLeft-- < 0) return; // too long to find, cancel
         randomHex = getRandomHex();
@@ -213,6 +167,10 @@ function hexTouched(hex){
         if (randomHex.colorBoolean === hex.colorBoolean) continue;
         // is already in transition? reroll
         if (randomHex.isInTransition) continue;
+        // too far away? reroll
+        if (dist(hex.renderPosition[0], hex.renderPosition[1], 
+            randomHex.renderPosition[0], randomHex.renderPosition[1])/TILE_SCALE > 4
+        ) continue;
         break;
     } 
     
@@ -321,28 +279,14 @@ function draw() {
             if (pc.progress < 1) allCompleted = false;
             pc.progress = min(pc.progress + pc.speed, 1);
 
-            // fill("white");
-            // circle(pc.pointA[0], pc.pointA[1], TILE_SCALE*0.5)
-            // fill("black");
-            // circle(pc.pointB[0], pc.pointB[1], TILE_SCALE*0.5)
+            const eProgress = sin(pc.progress*90);
+            const r = map(eProgress, 0, 1, pc.rotationA, pc.rotationB);
+            const deg = map(eProgress, 0, 1, 0, 180);
             
-            // fill("red");
-            // circle(pc.arcPoint[0], pc.arcPoint[1], TILE_SCALE*0.3)
-
-            // fill("yellow")
-            // for (let ww = 0; ww < 50; ww++){
-            //     const rPos = pointOnArc(pc, ww/50)
-            //     circle(rPos[0], rPos[1], TILE_SCALE*0.1)
-            // }
-
-            
-
-
-            /////// get eased progress
-            const r = map(pc.progress, 0, 1, pc.rotationA, pc.rotationB);
-            const x = map(pc.progress, 0, 1, pc.pointA[0], pc.pointB[0]);
-            const y = map(pc.progress, 0, 1, pc.pointA[1], pc.pointB[1]);
-            drawTriangle([x,y], r);
+            drawTriangle([
+                sin(pc.startAngle + deg * pc.negArc) * pc.radius + pc.midpoint[0],
+                cos(pc.startAngle + deg * pc.negArc) * pc.radius + pc.midpoint[1]
+            ], r);
         }
 
         if (allCompleted){ // end transition
@@ -354,7 +298,10 @@ function draw() {
     }
 
     if (autoClickTimer-- === 0) {
-        hexTouched(getRandomHex());
+        let randomHex;
+        do { randomHex = getRandomHex(); }
+        while(randomHex.isInTransition)
+        hexTouched(randomHex);
         resetAutoClick();
     }
     isTouching = false;
@@ -375,7 +322,6 @@ function touchEnded(){
 function getRandomHex(){
     return hexes[randomInt(0, hexes.length)][randomInt(0, hexes[0].length)];
 }
-
 function randomInt(start, end) { 
     return Math.floor(Math.random()*end + start); 
 }
