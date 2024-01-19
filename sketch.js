@@ -42,17 +42,17 @@ let themeHue = Math.random() * 100;
 let color1, color2;
 
 
-function getCanvasSize(){
+function getCanvasSize() {
     return [doc.clientWidth, doc.clientHeight * 1.1];
 }
-function windowResized(){
+function windowResized() {
     const [cvWidth, cvHeight] = getCanvasSize();
     resizeCanvas(cvWidth, cvHeight);
     resetApp();
 }
 
 
-function resetApp(){
+function resetApp() {
     const oldTS = TILE_SCALE;
     // recalculate the constants for rendering
     TILE_SCALE = min(width, height) * SCALING_FACTOR;
@@ -69,14 +69,14 @@ function resetApp(){
         [-HALF_TILE_SCALE, -SCALED_SQRT] // top left
     ];
 
-    const newMostX = ceil(width*BORDER_EXTEND *2/3/TILE_SCALE);
-    const newMostY = ceil(height*BORDER_EXTEND /SCALED_SQRT/2);
-    
+    const newMostX = ceil(width * BORDER_EXTEND * 2 / 3 / TILE_SCALE);
+    const newMostY = ceil(height * BORDER_EXTEND / SCALED_SQRT / 2);
+
     if (newMostX === mostX) { // only update rPos
-        for (let y=0; y < mostY; y++){
-            for (let x=0; x < mostX; x++){
+        for (let y = 0; y < mostY; y++) {
+            for (let x = 0; x < mostX; x++) {
                 const hex = hexes[y][x];
-                hex.renderPosition = getHexagonRenderPosition([x, y - floor(x/2)]);
+                hex.renderPosition = getHexagonRenderPosition([x, y - floor(x / 2)]);
             }
         }
     }
@@ -84,17 +84,17 @@ function resetApp(){
         mostX = newMostX;
         mostY = newMostY;
 
-        transitions = []; 
+        transitions = [];
         hexes = [];
 
         // set up a list of hexagons
-        for (let y=0; y < mostY; y++){
+        for (let y = 0; y < mostY; y++) {
             const row = [];
-            for (let x=0; x < mostX; x++){
+            for (let x = 0; x < mostX; x++) {
                 row.push({
-                    position: [x,y], 
-                    renderPosition: getHexagonRenderPosition([x, y - floor(x/2)]),
-                    colorBoolean: y > (mostY/mostX) * x, // true is color1
+                    position: [x, y],
+                    renderPosition: getHexagonRenderPosition([x, y - floor(x / 2)]),
+                    colorBoolean: y > (mostY / mostX) * x, // true is color1
                     isInTransition: false
                 });
             }
@@ -103,64 +103,62 @@ function resetApp(){
     }
 
     // TS changed? end all transitions
-    if (oldTS !== TILE_SCALE){
-        for (let i=0; i < transitions.length; i++){
+    if (oldTS !== TILE_SCALE) {
+        for (let i = 0; i < transitions.length; i++) {
             let particles = transitions[i].particles;
-            for (let j=0; j < particles.length; j++){
+            for (let j = 0; j < particles.length; j++) {
                 particles[j].progress = 1;
             }
         }
     }
-
-    document.getElementById("mostXY").innerText = `x: ${mostX} y: ${mostY}`;
 }
 
 
-function generateParticles(hex1, hex2){
+function generateParticles(hex1, hex2) {
     let h1rp = hex1.renderPosition;
     let h2rp = hex2.renderPosition;
-    
+
     // [rx, ry, rotation]
     let infoA = [
-        [h1rp[0] - HALF_TILE_SCALE, h1rp[1] - SCALED_SQRT/3, 0], // top left
-        [h1rp[0], h1rp[1] - SCALED_SQRT*2/3, 60], // top
-        [h1rp[0] + HALF_TILE_SCALE, h1rp[1] - SCALED_SQRT/3, 0], // top right
-        [h1rp[0] - HALF_TILE_SCALE, h1rp[1] + SCALED_SQRT/3, 60], // bottom left
-        [h1rp[0], h1rp[1] + SCALED_SQRT*2/3, 0], // bottom
-        [h1rp[0] + HALF_TILE_SCALE, h1rp[1] + SCALED_SQRT/3, 60] // bottom right
+        [h1rp[0] - HALF_TILE_SCALE, h1rp[1] - SCALED_SQRT / 3, 0], // top left
+        [h1rp[0], h1rp[1] - SCALED_SQRT * 2 / 3, 60], // top
+        [h1rp[0] + HALF_TILE_SCALE, h1rp[1] - SCALED_SQRT / 3, 0], // top right
+        [h1rp[0] - HALF_TILE_SCALE, h1rp[1] + SCALED_SQRT / 3, 60], // bottom left
+        [h1rp[0], h1rp[1] + SCALED_SQRT * 2 / 3, 0], // bottom
+        [h1rp[0] + HALF_TILE_SCALE, h1rp[1] + SCALED_SQRT / 3, 60] // bottom right
     ];
     let infoB = [
-        [h2rp[0] - HALF_TILE_SCALE, h2rp[1] - SCALED_SQRT/3, 0], // top left
-        [h2rp[0], h2rp[1] - SCALED_SQRT*2/3, 60], // top
-        [h2rp[0] + HALF_TILE_SCALE, h2rp[1] - SCALED_SQRT/3, 0], // top right
-        [h2rp[0] - HALF_TILE_SCALE, h2rp[1] + SCALED_SQRT/3, 60], // bottom left
-        [h2rp[0], h2rp[1] + SCALED_SQRT*2/3, 0], // bottom
-        [h2rp[0] + HALF_TILE_SCALE, h2rp[1] + SCALED_SQRT/3, 60] // bottom right
+        [h2rp[0] - HALF_TILE_SCALE, h2rp[1] - SCALED_SQRT / 3, 0], // top left
+        [h2rp[0], h2rp[1] - SCALED_SQRT * 2 / 3, 60], // top
+        [h2rp[0] + HALF_TILE_SCALE, h2rp[1] - SCALED_SQRT / 3, 0], // top right
+        [h2rp[0] - HALF_TILE_SCALE, h2rp[1] + SCALED_SQRT / 3, 60], // bottom left
+        [h2rp[0], h2rp[1] + SCALED_SQRT * 2 / 3, 0], // bottom
+        [h2rp[0] + HALF_TILE_SCALE, h2rp[1] + SCALED_SQRT / 3, 60] // bottom right
     ];
     infoB = shuffleArray(infoB.slice());
 
     return infoA.map((a, i) => {
         const b = infoB[i];
         const pc = {
-            pointA: [a[0], a[1]], 
-            rotationA: a[2] + randomInt(-2,3) * 120,
-            pointB: [b[0], b[1]], 
+            pointA: [a[0], a[1]],
+            rotationA: a[2] + randomInt(-2, 3) * 120,
+            pointB: [b[0], b[1]],
             rotationB: b[2],
             progress: 0,
             speed: PARTICLE_SPEED * (1 + Math.random() * PARTICLE_SPEED_RANGE),
             negArc: Math.random() > 0.5 ? 1 : -1
         };
-        pc.midpoint = [(pc.pointA[0] + pc.pointB[0])/2, (pc.pointA[1] + pc.pointB[1])/2];
+        pc.midpoint = [(pc.pointA[0] + pc.pointB[0]) / 2, (pc.pointA[1] + pc.pointB[1]) / 2];
         pc.startAngle = 90 - atan2(pc.pointA[1] - pc.midpoint[1], pc.pointA[0] - pc.midpoint[0]);
         pc.radius = dist(pc.midpoint[0], pc.midpoint[1], pc.pointA[0], pc.pointA[1]);
         return pc;
     });
 }
 
-function hexTouched(hex){
+function hexTouched(hex) {
     let randomHex;
     let attemptsLeft = 25;
-    while (true){
+    while (true) {
         if (attemptsLeft-- < 0) return; // too long to find, cancel
         randomHex = getRandomHex();
         // same color? reroll
@@ -168,51 +166,50 @@ function hexTouched(hex){
         // is already in transition? reroll
         if (randomHex.isInTransition) continue;
         // too far away? reroll
-        if (dist(hex.renderPosition[0], hex.renderPosition[1], 
-            randomHex.renderPosition[0], randomHex.renderPosition[1])/TILE_SCALE > 5
+        if (dist(hex.renderPosition[0], hex.renderPosition[1],
+            randomHex.renderPosition[0], randomHex.renderPosition[1]) / TILE_SCALE > 5
         ) continue;
         break;
-    } 
-    
+    }
+
     // add transition
     transitions.push({
         hex1: hex, hex2: randomHex,
-        colorBoolean: hex.colorBoolean, 
+        colorBoolean: hex.colorBoolean,
         particles: generateParticles(hex, randomHex)
     });
     hex.colorBoolean = !hex.colorBoolean; // flip hex1
-    hex.isInTransition = true;
     randomHex.isInTransition = true;
 }
 
 // returns the center position of the hexagon to render
 function getHexagonRenderPosition(position) {
     return [
-        (position[0] * TILE_SCALE * 3) / 2, 
+        (position[0] * TILE_SCALE * 3) / 2,
         (position[1] * 2 + position[0]) * SCALED_SQRT
     ];
 }
 
 // draw hexagon shape for given position
-function drawHexagon(renderPosition){
+function drawHexagon(renderPosition) {
     beginShape();
     for (let i = 0; i < HEX_POINTS_RENDER.length; i++) {
         vertex(
-            renderPosition[0] + HEX_POINTS_RENDER[i][0], 
+            renderPosition[0] + HEX_POINTS_RENDER[i][0],
             renderPosition[1] + HEX_POINTS_RENDER[i][1]
         );
     }
     endShape(CLOSE);
 }
 
-function drawTriangle(rPos, r){
+function drawTriangle(rPos, r) {
     push();
     translate(rPos[0], rPos[1]);
     rotate(r);
     triangle(
-        0, -SCALED_SQRT*2/3, // top
-        HALF_TILE_SCALE, SCALED_SQRT/3, // bottom right
-        -HALF_TILE_SCALE, SCALED_SQRT/3 // bottom left
+        0, -SCALED_SQRT * 2 / 3, // top
+        HALF_TILE_SCALE, SCALED_SQRT / 3, // bottom right
+        -HALF_TILE_SCALE, SCALED_SQRT / 3 // bottom left
     );
     pop();
 }
@@ -230,6 +227,7 @@ function setup() {
     noStroke();
 
     resetApp();
+    pageReady();
 }
 
 
@@ -245,19 +243,19 @@ function draw() {
     touchCountdown--; // update input blocking timer
     background(color2);
 
-    
+
     // render all hexes
-    for (let y=0; y < mostY; y++){
-        for (let x=0; x < mostX; x++){
+    for (let y = 0; y < mostY; y++) {
+        for (let x = 0; x < mostX; x++) {
             const hex = hexes[y][x];
             if (hex.colorBoolean) fill(color1);
             else noFill(); // no need to render darker blocks
             drawHexagon(hex.renderPosition);
-            
+
             // check hover
             if (isTouching && !hex.isInTransition && dist(
                 hex.renderPosition[0], hex.renderPosition[1], mouseX, mouseY
-            ) < TILE_SCALE*0.85){
+            ) < TILE_SCALE * 0.85) {
                 isTouching = false;
                 resetAutoClick();
                 hexTouched(hex);
@@ -267,32 +265,31 @@ function draw() {
     }
 
     // update transitions & particles
-    for (let i=transitions.length-1; i >= 0; i--){
+    for (let i = transitions.length - 1; i >= 0; i--) {
         let trs = transitions[i];
-        
+
         // update and render particles
         fill(trs.colorBoolean ? color1 : color2);
         let particles = trs.particles;
         let allCompleted = true;
-        for (let j=0; j < particles.length; j++){ 
+        for (let j = 0; j < particles.length; j++) {
             let pc = particles[j];
             if (pc.progress < 1) allCompleted = false;
             pc.progress = min(pc.progress + pc.speed, 1);
 
-            const eProgress = sin(pc.progress*90);
+            const eProgress = sin(pc.progress * 90);
             const r = map(eProgress, 0, 1, pc.rotationA, pc.rotationB);
             const deg = map(eProgress, 0, 1, 0, 180);
-            
+
             drawTriangle([
                 sin(pc.startAngle + deg * pc.negArc) * pc.radius + pc.midpoint[0],
                 cos(pc.startAngle + deg * pc.negArc) * pc.radius + pc.midpoint[1]
             ], r);
         }
 
-        if (allCompleted){ // end transition
+        if (allCompleted) { // end transition
             transitions.splice(i, 1);
             trs.hex2.colorBoolean = !trs.hex2.colorBoolean;
-            trs.hex1.isInTransition = false;
             trs.hex2.isInTransition = false;
         }
     }
@@ -300,43 +297,64 @@ function draw() {
     if (autoClickTimer-- === 0) {
         let randomHex;
         do { randomHex = getRandomHex(); }
-        while(randomHex.isInTransition)
+        while (randomHex.isInTransition)
         hexTouched(randomHex);
         resetAutoClick();
     }
     isTouching = false;
 }
 
-function resetAutoClick(){
+function resetAutoClick() {
     autoClickTimer = 60 * AUTOCLICK_DELAY;
 }
 
 let touchCountdown = 0;
 let isTouching = false;
-function touchEnded(){
-	if (touchCountdown > 0) return;
-	touchCountdown = 5;
+function touchEnded() {
+    if (touchCountdown > 0) return;
+    touchCountdown = 5;
     isTouching = true;
 }
 
-function getRandomHex(){
+function getRandomHex() {
     return hexes[randomInt(0, hexes.length)][randomInt(0, hexes[0].length)];
 }
-function randomInt(start, end) { 
-    return Math.floor(Math.random()*end + start); 
+function randomInt(start, end) {
+    return Math.floor(Math.random() * end + start);
 }
 function getRandomItem(arr) { return arr[randomInt(0, arr.length)]; }
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
 }
 
 const cc = console.log;
 
-// let mainEle = document.getElementsByTagName("main")[0];
-// for (let i=0; i < 8; i++){
-//     mainEle.innerHTML += `<button>Button ${i}</button><br>`
-// }
+
+let greetProgress = 0; // 0 to 100
+const tiltPercent = 20;
+const scrollProgressRange = parseInt(getComputedStyle(document.documentElement)
+    .getPropertyValue('--scroll-progress-range'));
+
+window.addEventListener("scroll", applyClipPath);
+window.addEventListener("load", applyClipPath);
+
+function applyClipPath(){
+    greetProgress = Math.min(1, window.scrollY / scrollProgressRange) * 100;
+    const displayProgress = greetProgress * (1 + tiltPercent/100);
+
+    const frontDiv = document.getElementById("greet-front-div");
+    frontDiv.style.clipPath = `polygon(0 0, 0 100%, ${displayProgress - tiltPercent}% 100%, ${displayProgress}% 0)`;
+
+    const behindDiv = document.getElementById("greet-behind-div");
+    behindDiv.style.clipPath = `polygon(100% 0, 100% 100%, ${displayProgress - tiltPercent}% 100%, ${displayProgress}% 0)`;
+}
+
+
+function pageReady(){
+
+    //// drop curtains
+}
