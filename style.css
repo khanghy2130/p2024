@@ -3,7 +3,7 @@
     --theme-color2: black; /* be changed by script */
     --text-color1: #F0F0F0;
     --dark-background-color: #111111;
-    --scroll-progress-range: 500px; /* bigger means animation requires more scrolling */
+    --scroll-progress-range: 600px; /* bigger means animation requires more scrolling */
 }
 
 * {
