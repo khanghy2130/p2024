@@ -18,7 +18,7 @@
     }
 */
 
-const SCALING_FACTOR = 0.135; // controls the hexagon size
+const SCALING_FACTOR = 0.15; // controls the hexagon size
 const BORDER_EXTEND = 1.1; // extends the border limit to include border hexes
 const COLOR_CHANGING_SPEED = 0.015;
 const PARTICLE_SPEED = 0.01;
@@ -228,6 +228,8 @@ function setup() {
 
     resetApp();
     pageReady();
+
+    document.getElementById("mostXY").innerText = `x: ${mostX} y: ${mostY}`;
 }
 
 
