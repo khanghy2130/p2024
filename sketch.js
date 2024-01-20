@@ -20,7 +20,7 @@
 
 const SCALING_FACTOR = 0.16; // controls the hexagon size
 const BORDER_EXTEND = 1.1; // extends the border limit to include border hexes
-const COLOR_CHANGING_SPEED = 0.015;
+const COLOR_CHANGING_SPEED = 0.02;
 const PARTICLE_SPEED = 0.01;
 const PARTICLE_SPEED_RANGE = 1.1; // added % of orginal speed
 const AUTOCLICK_DELAY = 3; // in seconds
@@ -335,24 +335,47 @@ function shuffleArray(array) {
 
 const cc = console.log;
 
-
+let showGreet = true;
 let greetProgress = 0; // 0 to 100
 const tiltPercent = 20;
 const scrollProgressRange = parseInt(getComputedStyle(document.documentElement)
     .getPropertyValue('--scroll-progress-range'));
 
-window.addEventListener("scroll", applyClipPath);
-window.addEventListener("load", applyClipPath);
+window.addEventListener("scroll", onScrollHandler);
+window.addEventListener("load", onScrollHandler);
 
-function applyClipPath(){
+function onScrollHandler(){
+    const oldGreetProgress = greetProgress;
     greetProgress = Math.min(1, window.scrollY / scrollProgressRange) * 100;
-    const displayProgress = greetProgress * (1 + tiltPercent/100);
 
-    const frontDiv = document.getElementById("greet-front-div");
-    frontDiv.style.clipPath = `polygon(0 0, 0 100%, ${displayProgress - tiltPercent}% 100%, ${displayProgress}% 0)`;
+    // greetProgress changed?
+    if (oldGreetProgress !== greetProgress){
+        const displayProgress = greetProgress * (1 + tiltPercent/100);
+        const frontDiv = document.getElementById("greet-front-div");
+        frontDiv.style.clipPath = `polygon(0 0, 0 100%, ${displayProgress - tiltPercent}% 100%, ${displayProgress}% 0)`;
+        const behindDiv = document.getElementById("greet-behind-div");
+        behindDiv.style.clipPath = `polygon(100% 0, 100% 100%, ${displayProgress - tiltPercent}% 100%, ${displayProgress}% 0)`;
+    }
 
-    const behindDiv = document.getElementById("greet-behind-div");
-    behindDiv.style.clipPath = `polygon(100% 0, 100% 100%, ${displayProgress - tiltPercent}% 100%, ${displayProgress}% 0)`;
+    // switch greet container and contact heading
+    const middleSectionTop= document.getElementById("middle-section")
+        .getBoundingClientRect().top;
+    // Check if the top of #middle-section is above the viewport
+    if (middleSectionTop < 0) {
+        if (showGreet){
+            showGreet = false; // show contact heading
+            document.getElementById("greet-container").hidden = true;
+            document.getElementById("contact-heading").hidden = false;
+            cc("contact")
+        }
+    } 
+    else if (!showGreet) {
+        showGreet = true; // show greet container
+        document.getElementById("greet-container").hidden = false;
+        document.getElementById("contact-heading").hidden = true;
+        cc("greet")
+    }
+
 }
 
 

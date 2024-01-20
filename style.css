@@ -1,8 +1,8 @@
 :root {
-    --theme-color1: black; /* be changed by script */
-    --theme-color2: black; /* be changed by script */
+    --theme-color1: black; /* lighter; be changed by script */
+    --theme-color2: black; /* darker; be changed by script */
     --text-color1: #F0F0F0;
-    --dark-background-color: #111111;
+    --dark-background-color: #191919;
     --scroll-progress-range: 600px; /* bigger means animation requires more scrolling */
 }
 
@@ -72,8 +72,17 @@ p {
 }
 
 
+#contact-heading {
+    position: fixed;
+    text-align: center;
+    width: 100vw;
+    z-index: -1;
+    top: 50%;
+    transform: translate(0, -65%);
+    font-size: min(14vw, 112px);
+}
 
-/* formula: min( <x>vw, <x*6>px ) */
+/* formula: min( <x>vw, <x*8>px ) */
 #greet-container {
     min-height: 100vh;
     width: 100vw;
@@ -84,9 +93,9 @@ p {
 /* this div is used to set height for #behind & #front divs */
 #greet-container > div {
     position: relative;
-    height: min(50vw, 300px);
+    height: min(50vw, 400px);
     top: 50vh;
-    transform: translate(0, -50%);
+    transform: translate(0, -65%);
 }
 
 
@@ -107,8 +116,7 @@ p {
 
 }
 #greet-behind-div h1 {
-    font-size: min(11vw, 64px);
-    font-weight: lighter;
+    font-size: min(11vw, 88px);
 }
 
 
@@ -117,28 +125,45 @@ p {
 }
 /* inner container used for aligning texts */
 #greet-front-div > div {
-    width: min(80vw, 440px);
+    width: min(80vw, 640px);
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
 }
 #greet-front-div h1 {
-    font-size: min(14vw, 84px);
-    margin: -0.4em 0 -0.3em 0;
+    font-size: min(15vw, 120px);
+    margin: -0.4em 0 -0.2em 0;
 }
 #greet-front-div p {
-    font-size: min(7vw, 42px);
+    font-size: min(5vw, 40px);
 }
 
 
 #middle-section {
-    margin-top: calc(100vh + var(--scroll-progress-range));
+    /* big margin to make room for scroll based animation */
+    margin-top: calc(90vh + var(--scroll-progress-range));
     min-height: 800px;
     width: 100vw;
     background-color: var(--dark-background-color);
 }
 
+
+#contact-form {
+    margin-top: min(30vw, 240px);
+    margin-bottom: 32px;
+    width: min(90vw, 720px);
+
+    min-height: 600px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(min(1.5vw, 12px));
+    clip-path: inset(0 0 0 0 round min(5vw, 40px) min(20vw, 160px) min(5vw, 40px) min(20vw, 160px));
+}
+
+
+footer {
+    padding: 1em 0 1em 0;
+}
 
 
 
