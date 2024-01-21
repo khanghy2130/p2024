@@ -1,7 +1,8 @@
 :root {
-    --theme-color1: black; /* lighter; be changed by script */
+    --theme-color1: grey; /* lighter; be changed by script */
     --theme-color2: black; /* darker; be changed by script */
     --text-color1: #F0F0F0;
+    --text-color2: #dedede;
     --dark-background-color: #191919;
     --scroll-progress-range: 600px; /* bigger means animation requires more scrolling */
 }
@@ -46,10 +47,18 @@ body {
 ::-webkit-scrollbar-thumb {
     background: var(--theme-color1);
 }
+::-moz-selection {
+    color: var(--dark-background-color);
+    background: var(--text-color2);
+}
+::selection {
+    color: var(--dark-background-color);
+    background: var(--text-color2);
+}
 
 #canvas-container {
     position: fixed;
-    z-index: -99;
+    z-index: -100;
 }
 
 
@@ -68,7 +77,7 @@ button {
 }
 
 p {
-    font-size: 28px;
+    font-size: min(5vw, 40px);
 }
 
 
@@ -76,8 +85,8 @@ p {
     position: fixed;
     text-align: center;
     width: 100vw;
-    z-index: -1;
-    top: 50%;
+    z-index: -90;
+    top: 50vh;
     transform: translate(0, -65%);
     font-size: min(14vw, 112px);
 }
@@ -87,7 +96,7 @@ p {
     min-height: 100vh;
     width: 100vw;
     position: fixed;
-    z-index: -1;
+    z-index: -90;
     
 }
 /* this div is used to set height for #behind & #front divs */
@@ -136,33 +145,104 @@ p {
     margin: -0.4em 0 -0.2em 0;
 }
 #greet-front-div p {
-    font-size: min(5vw, 40px);
+    font-size: min(5.5vw, 44px);
 }
 
 
 #middle-section {
     /* big margin to make room for scroll based animation */
-    margin-top: calc(90vh + var(--scroll-progress-range));
-    min-height: 800px;
+    margin-top: calc(110vh + var(--scroll-progress-range));
+    margin-bottom: 30vw;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+#body-middle-section {
     background-color: var(--dark-background-color);
+    margin-top: -1vw; /* fix gap with top-wave svg */
+    margin-bottom: -1vw; /* fix gap with botttom-wave svg */
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+}
+#body-middle-section > div {
+    /* background-color: #222222; */
+    width: min(90vw, 1200px);
+}
+
+
+#body-middle-section > div > h1 {
+    color: transparent;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+
+    font-size: min(10vw, 80px);
+    margin-top: min(6vw, 48px);
+}
+#body-middle-section > div > p {
+    color: var(--text-color2);
+}
+
+
+
+#top-wave-container, #bottom-wave-container {
+    position: relative;
+    z-index: -10;
+}
+#top-wave-container svg {
+    position: absolute;
+    bottom: 0;
+}
+#top-wave-container svg:first-of-type {
+    bottom: 4px; /*move gradient svg out*/
+}
+#bottom-wave-container svg {
+    position: absolute;
+    top: 0;
+}
+#bottom-wave-container svg:first-of-type {
+    top: 4px; /*move gradient svg out*/
 }
 
 
 #contact-form {
-    margin-top: min(30vw, 240px);
-    margin-bottom: 32px;
-    width: min(90vw, 720px);
-
-    min-height: 600px;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(min(1.5vw, 12px));
     clip-path: inset(0 0 0 0 round min(5vw, 40px) min(20vw, 160px) min(5vw, 40px) min(20vw, 160px));
+
+    margin-bottom: 32px;
+    width: min(90vw, 720px);
+    min-height: min(90vw, 720px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+#contact-form input, #contact-form textarea {
+    font-size: min(5vw, 40px);
+}
+#contact-form input {
+    background-color: var(--dark-background-color);
+    color: var(--text-color1);
+}
+#contact-form textarea {
+    resize: none;
+    overflow-y: scroll;
+    background-color: var(--dark-background-color);
+    color: var(--text-color1);
+}
+#contact-form button {
+    
 }
 
 
 footer {
-    padding: 1em 0 1em 0;
+    padding: 1em 0.5em 1em 0.5em;
+}
+footer > p {
+    font-size: min(5vw, 32px);
 }
 
 
@@ -184,4 +264,17 @@ footer {
     50% {
         background-position: 100% 0;
     }
+}
+
+.gradient-text-1{
+    background: linear-gradient(to right, #00ff00, #ff3399, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+}
+.gradient-text-2{
+    background: linear-gradient(to right, #ff3399, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff, #0099ff);
+}
+.gradient-text-3{
+    background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff, #0099ff, #00ff00);
+}
+.gradient-text-4{
+    background: linear-gradient(to right, #0099ff , #00ff00, #ff3399, #6666ff, #0099ff, #00ff00, #ff3399);
 }

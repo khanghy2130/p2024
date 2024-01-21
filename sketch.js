@@ -358,22 +358,20 @@ function onScrollHandler(){
     }
 
     // switch greet container and contact heading
-    const middleSectionTop= document.getElementById("middle-section")
+    const middleSectionTop= document.getElementById("body-middle-section")
         .getBoundingClientRect().top;
-    // Check if the top of #middle-section is above the viewport
+    // Check if the top of div is above the viewport
     if (middleSectionTop < 0) {
         if (showGreet){
             showGreet = false; // show contact heading
             document.getElementById("greet-container").hidden = true;
             document.getElementById("contact-heading").hidden = false;
-            cc("contact")
         }
     } 
     else if (!showGreet) {
         showGreet = true; // show greet container
         document.getElementById("greet-container").hidden = false;
         document.getElementById("contact-heading").hidden = true;
-        cc("greet")
     }
 
 }
