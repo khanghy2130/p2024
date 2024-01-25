@@ -2,14 +2,25 @@ const cc = console.log;
 
 let showGreet = true;
 let greetProgress = 0; // 0 to 100
-const tiltPercent = 20;
+const tiltPercent = 20; // angle of greet clip path
 const scrollProgressRange = parseInt(getComputedStyle(document.documentElement)
     .getPropertyValue('--scroll-progress-range'));
 
-window.addEventListener("scroll", onScrollHandler);
-window.addEventListener("load", onScrollHandler);
 
-function onScrollHandler(){
+window.addEventListener("load", updateScroll);
+window.addEventListener("scroll", () => {
+    if (updateScrollTimeout) return; // already set to trigger later
+    else { // not set? trigger after a delay
+        updateScrollTimeout = setTimeout(() => {
+            updateScrollTimeout = null;
+            updateScroll();
+        }, 100); // delay time
+    }
+});
+
+
+let updateScrollTimeout = null;
+function updateScroll(){cc(greetProgress)
     const oldGreetProgress = greetProgress;
     greetProgress = Math.min(1, window.scrollY / scrollProgressRange) * 100;
 
@@ -48,3 +59,5 @@ function pageReady(){
 
     //// drop curtains
 }
+
+
