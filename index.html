@@ -64,9 +64,11 @@
 					<h1 class="gradient-text-1">WHO IS HY NGUYEN?</h1>
 					<p>That's me! I'm a web developer located in Cleburne, Texas. Problem solving has always been my biggest interest. I'm excited to actualize ideas with great people, as well as to explore and master the tools that make it possible.</p>
 					<h1 class="gradient-text-2">TOOLS</h1>
-					<p>That's me! I'm a web developer located in Cleburne, Texas. Problem solving has always been my biggest interest. I'm excited to actualize ideas with great people, as well as to explore and master the tools that make it possible.</p>
+					<div>
+						
+					</div>
 					<h1 class="gradient-text-3">FEATURED PROJECT</h1>
-					<p>That's me! I'm a web developer located in Cleburne, Texas. Problem solving has always been my biggest interest. I'm excited to actualize ideas with great people, as well as to explore and master the tools that make it possible.</p>
+					<p>Project description</p>
 					<h1 class="gradient-text-4">OTHER PROJECTS</h1>
 					<p id="mostXY"></p>
 				</div>
@@ -88,21 +90,25 @@
 			<h1 class="gradient-text-3">CONTACT</h1>
 
 			<div id="inputs-container">
-				<input id="name-input" type="text" name="name" 
-				placeholder="Name" autocomplete="off" required>
-				<div></div>
-
-				<input id="email-input" type="email" name="email" 
-				placeholder="Email" autocomplete="off" required>
-				<div></div>
+				<div class="each-input-div">
+					<div></div>
+					<input id="name-input" type="text" name="name" 
+					placeholder="Name" autocomplete="off" required>
+				</div>
+				
+				<div class="each-input-div">
+					<div></div>
+					<input id="email-input" type="email" name="email" 
+					placeholder="Email" autocomplete="off" required>
+				</div>
 
 				<input type="text" name="slap_honey" hidden>
-				<input type="text" name="slap_redirect" hidden 
-				value="https://youtu.be/7nQ2oiVqKHw">
 
-				<textarea id="message-input" type="text" name="message" 
-				placeholder="Message" required></textarea>
-				<div></div>
+				<div class="each-input-div">
+					<div></div>
+					<textarea id="message-input" type="text" name="message" 
+					placeholder="Message" required></textarea>
+				</div>
 
 				<button type="submit">Send</button>
 			</div>

@@ -218,7 +218,7 @@ p {
 
 #contact-form {
     background: var(--background-color1);
-    clip-path: inset(0 0 0 0 round min(2vw, 16px) min(10vw, 80px) min(2vw, 16px) min(10vw, 80px));
+    clip-path: inset(0 0 0 0 round min(2vw, 16px) min(15vw, 120px) min(2vw, 16px) min(15vw, 120px));
     
     display: flex;
     flex-direction: column;
@@ -243,13 +243,29 @@ p {
     margin: 0 min(5vw, 40px);
 }
 
+.each-input-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: min(1.5vw, 8px) 0;
+}
+.each-input-div > div { /* animated line */
+    background: var(--text-color1);
+    width: min(1vw, 8px);
+    transition: height 0.5s ease;
+    height: 0%;
+}
+.each-input-div:focus-within > div {
+    height: 100%;
+}
+
 input, textarea {
+    flex-grow: 1;
     font-size: min(5vw, 24px);
     color: var(--text-color1);
     background: var(--background-color2);
     border: none;
     padding: min(2vw, 16px);
-    margin: min(1.5vw, 8px) 0;
 }
 textarea:focus, input:focus{
     outline: none;
@@ -258,6 +274,9 @@ textarea:focus, input:focus{
     resize: none;
     height: min(20vw, 120px);
     overflow-y: scroll;
+}
+#contact-form textarea::-webkit-scrollbar-track {
+    background: var(--background-color2);
 }
 
 #contact-form button {
