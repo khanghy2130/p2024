@@ -2,8 +2,8 @@
     --theme-color1: grey; /* lighter; be changed by script */
     --theme-color2: black; /* darker; be changed by script */
     --text-color1: #f0f0f0;
-    --text-color2: #dedede;
-    --background-color1: #191919;
+    --text-color2: #cccccc;
+    --background-color1: #1b1b1b;
     --background-color2: #242424;
     --scroll-progress-range: 600px; /* bigger means animation requires more scrolling */
 }
@@ -175,10 +175,12 @@ p {
     /* background-color: #222222; */
     width: min(90vw, 1000px);
     padding: min(5vw, 40px) 0;
+    display: flex;
+    flex-direction: column;
 }
 
 
-#body-middle-section > div > h1 {
+#body-middle-section > div > h1 { /* main headings */
     color: transparent;
     -webkit-background-clip: text !important;
     background-clip: text !important;
@@ -188,11 +190,25 @@ p {
 #body-middle-section > div > h1:not(:first-child) {
     margin-top: min(16vw, 128px); /* space between each sub section */
 }
-#body-middle-section > div > p {
+
+
+#about-paragraph {
     color: var(--text-color2);
     font-size: min(6vw, 32px);
 }
 
+#tools-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: center;
+    width: min(100%, 700px);
+}
+#tools-container > img {
+    width: 0;
+    flex-basis: calc(100% / 5 - 4%); /* 100% / (items in a row) - (margin * 2) */
+    margin: 2%;
+}
 
 
 #top-wave-container, #bottom-wave-container {
@@ -250,7 +266,7 @@ p {
     margin: min(1.5vw, 8px) 0;
 }
 .each-input-div > div { /* animated line */
-    background: var(--text-color1);
+    background: var(--text-color2);
     width: min(1vw, 8px);
     transition: height 0.5s ease;
     height: 0%;
@@ -282,7 +298,6 @@ textarea:focus, input:focus{
 #contact-form button {
     font-weight: bold;
     color: var(--text-color2);
-    background: var(--background-color2);
     border: none;
     border-radius: 0.3em;
     font-size: min(6vw, 40px);
@@ -290,11 +305,19 @@ textarea:focus, input:focus{
     margin-top: min(3vw, 24px);
     transition-property: color, background;
     transition-duration: 0.3s;
+    
+    background: linear-gradient(to bottom, var(--text-color2) 50%, var(--background-color2) 50%);
+    background-size: 100% 200%;
+    background-position: left bottom;
 }
 #contact-form button:hover {
     cursor: pointer;
     color: var(--background-color2);
-    background: var(--text-color2);
+    background-position:left top;
+
+}
+#contact-form button > div {
+    position: absolute;
 }
 
 #social-links-container {
