@@ -61,16 +61,6 @@ const tiltPercent = 20; // angle of greet clip path
 const scrollProgressRange = parseInt(getComputedStyle(document.documentElement)
     .getPropertyValue('--scroll-progress-range'));
 
-window.addEventListener("load", updateScroll);
-window.addEventListener("scroll", () => {
-    if (updateScrollTimeout) return; // already set to trigger later
-    else { // not set? trigger after a delay
-        updateScrollTimeout = setTimeout(() => {
-            updateScrollTimeout = null;
-            updateScroll();
-        }, 100); // delay time
-    }
-});
 
 let updateScrollTimeout = null;
 function updateScroll(){
@@ -106,13 +96,101 @@ function updateScroll(){
 }
 
 
-// load tools
+// load tool icons
 const toolsContainer = document.getElementById("tools-container");
-TOOLS_LIST.forEach(({toolName, iconSrc}) => {
+TOOLS_LIST.forEach((tool) => {
     const iconElement = new Image();
-    iconElement.src = iconSrc;
+    iconElement.src = tool.iconSrc;
+    iconElement.addEventListener("mouseenter", iconMouseEnterHandler);
+    iconElement.addEventListener("mouseleave", iconMouseLeaveHandler);
+
     toolsContainer.appendChild(iconElement);
-})
+    tool.iconElement = iconElement;
+});
+function iconMouseEnterHandler(e){
+    toolTargeter.targetedIcon = e.currentTarget;
+    toolTargeter.setFramePosition();
+    toolTargeter.setTargetedName();
+    clearInterval(toolTargeter.autoChangeTimer);
+}
+function iconMouseLeaveHandler(e){
+    toolTargeter.setAutoChangeTimer();
+}
+
+
+const toolTargeter = {
+    // initial targetedIcon is a random icon
+    targetedName: "",
+    targetedIcon: getRandomToolIcon(),
+    text: document.getElementById("tool-targeter-text"),
+    frame: document.getElementById("tool-targeter-frame"),
+
+    setFrameSize: function(){
+        toolTargeter.frame.style.width = (toolTargeter.targetedIcon.clientWidth * 1.2) + "px";
+        toolTargeter.frame.style.height = toolTargeter.frame.style.width;
+    },
+    setFramePosition: function(){
+        const centerX = toolTargeter.targetedIcon.offsetLeft + toolTargeter.targetedIcon.offsetWidth / 2 - toolTargeter.frame.offsetWidth / 2;
+        const centerY = toolTargeter.targetedIcon.offsetTop + toolTargeter.targetedIcon.offsetHeight / 2 - toolTargeter.frame.offsetHeight / 2;
+        toolTargeter.frame.style.top = centerY + "px";
+        toolTargeter.frame.style.left = centerX + "px";
+    },
+    setTargetedName: function(){
+        TOOLS_LIST.some(({iconElement, toolName}) => {
+            if (toolTargeter.targetedIcon === iconElement){
+                toolTargeter.targetedName = toolName;
+                return true;
+            }
+            return false;
+        });
+    },
+
+    autoChangeTimer: null,
+    setAutoChangeTimer: function(){
+        clearInterval(toolTargeter.autoChangeTimer);
+        toolTargeter.autoChangeTimer = setInterval(() => {
+            toolTargeter.targetedIcon = getRandomToolIcon();
+            toolTargeter.setFramePosition();
+            toolTargeter.setTargetedName();
+        }, 3000);
+    },
+    setToolNameUpdateTimer: function(){
+        setInterval(() => {
+            // check if name already matched
+            if (toolTargeter.text.innerText === toolTargeter.targetedName) return;
+            
+            const textEle = toolTargeter.text;
+            const loopLength = Math.max(
+                toolTargeter.targetedName.length,
+                textEle.innerText.length
+            );
+            for (let i=0; i < loopLength; i++){
+                const targetChar = toolTargeter.targetedName.charAt(i);
+                // check to change first wrong letter
+                if (textEle.innerText.charAt(i) !== targetChar){
+                    let charArr = textEle.innerText.split("");
+                    if (!targetChar){
+                        charArr.splice(i, 1); // no targetChar, remove char
+                    } else {
+                        charArr[i] = targetChar;
+                    }
+                    textEle.innerText = charArr.join("");
+                    return; // exit after change
+                }
+            }
+        }, 100);
+    }
+};
+
+
+function getRandomToolIcon() {
+    return TOOLS_LIST[
+        Math.floor( Math.random() * TOOLS_LIST.length )
+    ].iconElement;
+}
+
+
+
 
 
 
@@ -123,3 +201,27 @@ function pageReady(){
 }
 
 
+
+window.addEventListener("load", () => {
+    updateScroll();
+    toolTargeter.setFrameSize();
+    toolTargeter.setFramePosition();
+    toolTargeter.setTargetedName(); // already has a random target
+    toolTargeter.setAutoChangeTimer();
+    toolTargeter.setToolNameUpdateTimer();
+});
+
+window.addEventListener("resize", function(){
+    toolTargeter.setFrameSize();
+    toolTargeter.setFramePosition();
+});
+
+window.addEventListener("scroll", () => {
+    if (updateScrollTimeout) return; // already set to trigger later
+    else { // not set? trigger after a delay
+        updateScrollTimeout = setTimeout(() => {
+            updateScrollTimeout = null;
+            updateScroll();
+        }, 100); // delay time
+    }
+});
