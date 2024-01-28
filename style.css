@@ -2,7 +2,8 @@
     --theme-color1: grey; /* lighter; be changed by script */
     --theme-color2: black; /* darker; be changed by script */
     --text-color1: #f0f0f0;
-    --text-color2: #cccccc;
+    --text-color2: #d3d3d3;
+    --text-color3: #f3f65c;
     --background-color1: #1b1b1b;
     --background-color2: #242424;
     --scroll-progress-range: 600px; /* bigger means animation requires more scrolling */
@@ -36,18 +37,6 @@ body, input, textarea, button {
 }
 
 
-body {
-    background-color: var(--theme-color2);
-    color: var(--text-color1);
-    overflow-x: hidden;
-}
-
-/* override visited link color change */
-a, a:visited, a:hover, a:active {
-    color: inherit;
-}
-
-
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -67,11 +56,17 @@ a, a:visited, a:hover, a:active {
 }
 
 
+body {
+    background-color: var(--theme-color2);
+    color: var(--text-color1);
+    overflow-x: hidden;
+}
+
+
 #canvas-container {
     position: fixed;
     z-index: -100;
 }
-
 
 main {
     height: 100vh;
@@ -81,18 +76,35 @@ main {
     position: relative;
 }
 
-
 button {
-    font-size: 36px;
-    margin: 25px;
-    padding: 10px;
+    border: none;
+    transition-property: color, background;
+    transition-duration: 0.3s;
+    color: var(--text-color2);
+    background: linear-gradient(to bottom, var(--text-color2) 50%, var(--background-color2) 50%);
+    background-size: 100% 200%;
+    background-position: left bottom;
+}
+button:hover {
+    cursor: pointer;
+    color: var(--background-color2);
+    background-position: left top;
 }
 
-p {
-    font-size: min(5vw, 40px);
+.link {
+    text-decoration: none;
+    transition-property: color, background;
+    transition-duration: 0.3s;
+    color: var(--text-color3);
+    background: linear-gradient(to top, var(--text-color3) 50%, var(--background-color1) 50%);
+    background-size: 100% 200%;
+    background-position: left top;
 }
-
-
+.link:hover {
+    cursor: pointer;
+    color: var(--background-color1);
+    background-position: left bottom;
+}
 
 
 /* formula: min( <x>vw, <x*8>px ) */
@@ -125,9 +137,9 @@ p {
 }
 
 
-
 #greet-behind-div h1 {
     font-size: min(11vw, 88px);
+    font-weight: lighter;
 }
 #greet-front-div {
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
@@ -202,7 +214,6 @@ p {
     flex-direction: column;
 }
 
-
 #body-middle-section > div > h1 { /* main headings */
     color: transparent;
     -webkit-background-clip: text !important;
@@ -214,13 +225,13 @@ p {
     margin-top: min(16vw, 128px); /* space between each sub section */
 }
 
-
+/* ABOUT */
 #about-paragraph {
     color: var(--text-color2);
-    font-size: min(6vw, 32px);
+    font-size: min(5.5vw, 32px);
 }
 
-
+/* TOOLS */
 #tools-container {
     display: flex;
     flex-wrap: wrap;
@@ -258,7 +269,79 @@ p {
     font-weight: bold;
 }
 
+/* FEATURED PROJECT */
 
+#featured-project-container {
+    display: flex;
+    flex-direction: column;
+}
+#featured-project-container > h2 {
+    font-size: min(7vw, 40px);
+    font-weight: lighter;
+}
+
+#featured-project-links-container {
+    display: flex;
+    flex-direction: row;
+    padding-top: min(2vw, 16px);
+}
+#featured-project-links-container button {
+    font-size: min(5vw, 28px);
+    margin-right: min(2vw, 16px);
+    padding: 0 min(3vw, 24px);
+}
+#featured-project-links-container button > svg {
+    width: min(3vw, 24px);
+    height: min(3vw, 24px);
+    fill: var(--text-color2);
+    transition: fill 0.3s;
+}
+#featured-project-links-container button:hover > svg {
+    fill: var(--background-color2);
+}
+
+#featured-project-description-container {
+    display: flex;
+    flex-direction: row;
+    padding: min(4vw, 32px) 0;
+    font-size: min(5vw, 24px);
+    color: var(--text-color2);
+}
+#featured-project-description-container > p{
+    width: 55%;
+    padding-right: min(7vw, 56px);
+}
+#featured-project-description-container > ul {
+    width: 45%;
+}
+
+#video-container {
+    display: flex;
+    justify-content: center;
+}
+#feature-project-demo-video {
+    width: min(90vw, 500px);
+    aspect-ratio: 16 / 9;
+}
+
+/* FEATURE PROJECT (smaller screen) */
+@media (width <= 1000px) {
+    #featured-project-description-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    #featured-project-description-container > p{
+        width: 100%;
+        padding-right: 0;
+    }
+    #featured-project-description-container > ul{
+        width: 100%;
+        padding-left: 10vw;
+        padding-top: 2vw;
+    }
+}
+
+/* WAVES */
 #top-wave-container, #bottom-wave-container {
     position: relative;
     z-index: -10;
@@ -279,16 +362,16 @@ p {
 }
 
 
-
+/* CONTACT */
 #contact-form {
     background: var(--background-color1);
-    clip-path: inset(0 0 0 0 round min(2vw, 16px) min(15vw, 120px) min(2vw, 16px) min(15vw, 120px));
+    clip-path: inset(0 0 0 0 round 0 min(15vw, 120px) 0 min(15vw, 120px));
     
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    width: min(95vw, 760px);
+    width: min(95vw, 700px);
     margin: min(10vw, 80px) 0;
     padding: min(5vw, 40px) 0;
 }
@@ -315,7 +398,7 @@ p {
 }
 .each-input-div > div { /* animated line */
     background: var(--text-color2);
-    width: min(1vw, 8px);
+    width: min(0.5vw, 4px);
     transition: height 0.3s ease;
     height: 0%;
 }
@@ -329,7 +412,7 @@ input, textarea {
     color: var(--text-color1);
     background: var(--background-color2);
     border: none;
-    padding: min(2vw, 16px);
+    padding: min(1vw, 8px) min(2vw, 16px);
 }
 textarea:focus, input:focus{
     outline: none;
@@ -343,44 +426,39 @@ textarea:focus, input:focus{
     background: var(--background-color2);
 }
 
-#contact-form button {
-    font-weight: bold;
-    color: var(--text-color2);
-    border: none;
-    border-radius: 0.3em;
+#contact-form button[type="submit"] {
     font-size: min(6vw, 40px);
     padding: 4px 0;
     margin-top: min(3vw, 24px);
-    transition-property: color, background;
-    transition-duration: 0.3s;
-    
-    background: linear-gradient(to bottom, var(--text-color2) 50%, var(--background-color2) 50%);
-    background-size: 100% 200%;
-    background-position: left bottom;
-}
-#contact-form button:hover {
-    cursor: pointer;
-    color: var(--background-color2);
-    background-position:left top;
-
-}
-#contact-form button > div {
-    position: absolute;
 }
 
+/* SOCIAL LINKS */
 #social-links-container {
     display: flex;
     flex-direction: column;
     align-items: end;
+    padding-top: min(3vw, 24px);
     padding-right: min(5vw, 40px);
 }
-#social-links-container > p {
-
+#social-links-container button {
+    font-size: min(5vw, 32px);
+    padding: 0 min(3vw, 24px);
+    margin-top: min(2vw, 16px);
+}
+#social-links-container button > svg {
+    width: min(3vw, 24px);
+    height: min(3vw, 24px);
+    fill: var(--text-color2);
+    transition: fill 0.3s;
+}
+#social-links-container button:hover > svg {
+    fill: var(--background-color2);
 }
 
 #contact-heading {
     position: fixed;
     text-align: center;
+    font-weight: lighter;
     width: 100vw;
     z-index: -90;
     top: 50vh;
@@ -393,7 +471,7 @@ footer {
     margin-top: 2em;
 }
 footer > p {
-    font-size: min(5vw, 32px);
+    font-size: min(5vw, 24px);
 }
 
 
