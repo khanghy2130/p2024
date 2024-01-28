@@ -150,9 +150,31 @@ p {
 
 #scroll-cue-div {
     position: absolute;
-    bottom: min(-10vw, -80px);
+    bottom: max(-12vw, -96px);
     left: 50%;
     transform: translate(-50%, 0);
+}
+.chevron {
+    display: flex;
+	content: '';
+	border-style: solid;
+    border-color: var(--text-color1);
+	border-width: min(0.5vw, 4px) min(0.5vw, 4px) 0 0;
+	transform: rotate(135deg);
+	height: min(5vw, 40px);
+	width: min(5vw, 40px);
+    margin-top: max(-2vw, -16px);
+    animation: bounceAlpha 3s ease-in-out infinite;
+}
+.chevron:first-child {
+    animation-delay: 0.5s;
+}
+
+@keyframes bounceAlpha {
+    0%  {opacity: 1; transform: translateY(0) rotate(135deg);}
+    23% {opacity: 0; transform: translateY(min(2vw, 16px)) rotate(135deg);}
+    24% {opacity: 0; transform: translateY(max(-2vw, -16px)) rotate(135deg);}
+    55% {opacity: 1; transform: translateY(0) rotate(135deg);}
 }
 
 

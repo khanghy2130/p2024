@@ -178,7 +178,7 @@ const toolTargeter = {
                     return; // exit after change
                 }
             }
-        }, 100);
+        }, 120);
     }
 };
 
