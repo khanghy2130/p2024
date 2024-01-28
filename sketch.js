@@ -38,7 +38,6 @@ let hexes = []; // contains hexagon objects
 let transitions = [];
 let autoClickTimer = 200;
 
-let themeHue = Math.random() * 100;
 let color1, color2;
 
 
@@ -223,8 +222,13 @@ function setup() {
     imageMode(CENTER);
     angleMode(DEGREES);
     strokeJoin(ROUND);
-    colorMode(HSB, 100);
     noStroke();
+
+    color1 = color(getComputedStyle(document.documentElement)
+    .getPropertyValue('--background-color2'));
+    color2 = color(getComputedStyle(document.documentElement)
+    .getPropertyValue('--background-color1'));
+    // color1 = color("#878f17");
 
     resetApp();
     pageReady();
@@ -232,14 +236,6 @@ function setup() {
 
 
 function draw() {
-    // update theme colors
-    themeHue += COLOR_CHANGING_SPEED; // color changing speed
-    if (themeHue > 100) themeHue -= 100;
-    color1 = color(themeHue, 60, 35);
-    color2 = color(themeHue, 50, 20);
-    rootStyle.setProperty("--theme-color1", color1.toString());
-    rootStyle.setProperty("--theme-color2", color2.toString());
-
     touchCountdown--; // update input blocking timer
     background(color2);
 

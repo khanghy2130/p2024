@@ -5,7 +5,7 @@
     --text-color2: #d3d3d3;
     --text-color3: #f3f65c;
     --background-color1: #1b1b1b;
-    --background-color2: #242424;
+    --background-color2: #282828;
     --scroll-progress-range: 600px; /* bigger means animation requires more scrolling */
 }
 
@@ -57,7 +57,7 @@ body, input, textarea, button {
 
 
 body {
-    background-color: var(--theme-color2);
+    background-color: var(--background-color1);
     color: var(--text-color1);
     overflow-x: hidden;
 }
@@ -237,7 +237,7 @@ button:hover {
     flex-wrap: wrap;
     justify-content: center;
     align-self: center;
-    width: min(100%, 700px);
+    width: min(100%, 600px);
 }
 #tools-container > img {
     width: 0;
@@ -250,6 +250,7 @@ button:hover {
     position: absolute;
     border: min(1vw, 8px) var(--text-color1) solid;
     border-radius: min(3vw, 24px);
+    left: -150vh; /* hide away on load */
 
     display: flex;
     flex-direction: column;
@@ -262,7 +263,7 @@ button:hover {
 #tool-targeter-text {
     background: var(--text-color1);
     color: var(--background-color1);
-    margin-top: -37%;
+    margin-top: max(-6vw, -48px);
     padding: 0 min(1vw, 8px);
     border-radius: min(2vw, 16px);
     font-size: min(4vw, 32px);
@@ -291,8 +292,8 @@ button:hover {
     padding: 0 min(3vw, 24px);
 }
 #featured-project-links-container button > svg {
-    width: min(3vw, 24px);
-    height: min(3vw, 24px);
+    width: min(4vw, 24px);
+    height: min(4vw, 24px);
     fill: var(--text-color2);
     transition: fill 0.3s;
 }
@@ -308,11 +309,11 @@ button:hover {
     color: var(--text-color2);
 }
 #featured-project-description-container > p{
-    width: 55%;
-    padding-right: min(7vw, 56px);
+    width: 60%;
 }
 #featured-project-description-container > ul {
-    width: 45%;
+    width: 40%;
+    padding-left: min(10vw, 48px);
 }
 
 #video-container {
@@ -332,7 +333,6 @@ button:hover {
     }
     #featured-project-description-container > p{
         width: 100%;
-        padding-right: 0;
     }
     #featured-project-description-container > ul{
         width: 100%;
@@ -387,7 +387,7 @@ button:hover {
 #inputs-container {
     display: flex;
     flex-direction: column;
-    margin: 0 min(5vw, 40px);
+    margin: min(2vw, 16px) min(5vw, 40px);
 }
 
 .each-input-div {
@@ -446,8 +446,8 @@ textarea:focus, input:focus{
     margin-top: min(2vw, 16px);
 }
 #social-links-container button > svg {
-    width: min(3vw, 24px);
-    height: min(3vw, 24px);
+    width: min(4vw, 24px);
+    height: min(4vw, 24px);
     fill: var(--text-color2);
     transition: fill 0.3s;
 }
