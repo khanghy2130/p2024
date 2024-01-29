@@ -1,12 +1,11 @@
 :root {
-    --theme-color1: grey; /* lighter; be changed by script */
-    --theme-color2: black; /* darker; be changed by script */
     --text-color1: #f0f0f0;
     --text-color2: #d3d3d3;
     --text-color3: #f3f65c;
     --background-color1: #1b1b1b;
     --background-color2: #282828;
     --scroll-progress-range: 600px; /* bigger means animation requires more scrolling */
+    --gradient-line-width: min(0.8vw, 4px);
 }
 
 * {
@@ -76,6 +75,10 @@ main {
     position: relative;
 }
 
+a {
+    text-decoration: none;
+}
+
 button {
     border: none;
     transition-property: color, background;
@@ -92,18 +95,28 @@ button:hover {
 }
 
 .link {
-    text-decoration: none;
     transition-property: color, background;
     transition-duration: 0.3s;
     color: var(--text-color3);
     background: linear-gradient(to top, var(--text-color3) 50%, var(--background-color1) 50%);
     background-size: 100% 200%;
-    background-position: left top;
+    background-position: left 0%;
 }
 .link:hover {
     cursor: pointer;
     color: var(--background-color1);
-    background-position: left bottom;
+    background-position: left 100%;
+}
+
+button .new-tab-svg {
+    margin-left: min(1vw, 8px);
+    width: min(4vw, 24px);
+    height: min(4vw, 24px);
+    fill: var(--text-color2);
+    transition: fill 0.3s;
+}
+button:hover .new-tab-svg {
+    fill: var(--background-color2);
 }
 
 
@@ -287,18 +300,11 @@ button:hover {
     padding-top: min(2vw, 16px);
 }
 #featured-project-links-container button {
+    display: flex;
+    align-items: center;
     font-size: min(5vw, 28px);
     margin-right: min(2vw, 16px);
-    padding: 0 min(3vw, 24px);
-}
-#featured-project-links-container button > svg {
-    width: min(4vw, 24px);
-    height: min(4vw, 24px);
-    fill: var(--text-color2);
-    transition: fill 0.3s;
-}
-#featured-project-links-container button:hover > svg {
-    fill: var(--background-color2);
+    padding: min(0.5vw, 4px) min(3vw, 24px);
 }
 
 #featured-project-description-container {
@@ -335,11 +341,32 @@ button:hover {
         width: 100%;
     }
     #featured-project-description-container > ul{
-        width: 100%;
-        padding-left: 10vw;
+        width: 90%;
+        padding-left: 5vw;
         padding-top: 2vw;
     }
 }
+
+
+/* OTHER PROJECTS */
+#other-projects-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.other-projects-item {
+    font-size: min(5vw, 28px);
+    color: var(--text-color2);
+    margin: min(3vw, 24px);
+}
+.other-projects-item button {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    font-size: min(5vw, 28px);
+    padding: 0 min(3vw, 24px);
+}
+
 
 /* WAVES */
 #top-wave-container, #bottom-wave-container {
@@ -351,29 +378,47 @@ button:hover {
     bottom: 0;
 }
 #top-wave-container svg:first-of-type {
-    bottom: 4px; /*move gradient svg out*/
+    bottom: var(--gradient-line-width); /*move gradient svg out*/
 }
 #bottom-wave-container svg {
     position: absolute;
     top: 0;
 }
 #bottom-wave-container svg:first-of-type {
-    top: 4px; /*move gradient svg out*/
+    top: var(--gradient-line-width); /*move gradient svg out*/
 }
 
 
 /* CONTACT */
 #contact-form {
-    background: var(--background-color1);
-    clip-path: inset(0 0 0 0 round 0 min(15vw, 120px) 0 min(15vw, 120px));
-    
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    background: var(--background-color1);
+    border-radius: 0 min(15vw, 120px) 0 min(15vw, 120px);
 
-    width: min(95vw, 700px);
+    width: min(82vw, 600px);
     margin: min(10vw, 80px) 0;
-    padding: min(5vw, 40px) 0;
+    padding: min(5vw, 40px) min(6vw, 48px);
+}
+#contact-form::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0 min(15vw, 120px) 0 min(15vw, 120px); 
+    padding: var(--gradient-line-width); 
+    background: linear-gradient(45deg, #ff3399, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff); 
+    
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude; 
 }
 
 #contact-form > h1 {
@@ -387,7 +432,7 @@ button:hover {
 #inputs-container {
     display: flex;
     flex-direction: column;
-    margin: min(2vw, 16px) min(5vw, 40px);
+    margin: min(2vw, 16px) 0;
 }
 
 .each-input-div {
@@ -438,21 +483,13 @@ textarea:focus, input:focus{
     flex-direction: column;
     align-items: end;
     padding-top: min(3vw, 24px);
-    padding-right: min(5vw, 40px);
 }
 #social-links-container button {
+    display: flex;
+    align-items: center;
     font-size: min(5vw, 32px);
     padding: 0 min(3vw, 24px);
     margin-top: min(2vw, 16px);
-}
-#social-links-container button > svg {
-    width: min(4vw, 24px);
-    height: min(4vw, 24px);
-    fill: var(--text-color2);
-    transition: fill 0.3s;
-}
-#social-links-container button:hover > svg {
-    fill: var(--background-color2);
 }
 
 #contact-heading {

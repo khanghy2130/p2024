@@ -9,13 +9,19 @@
 </head>
 
 <body>
+	<!-- reusable SVG path -->
+	<svg style="display: none;">
+		<symbol id="new-tab-icon" viewBox="0 0 24 24">
+			<path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/>
+		</symbol>
+	</svg>
+
+
 	<div id="canvas-container">
 		<canvas id="bg-canvas"></canvas>
 	</div>
 
-
 	<main>
-
 		<div id="greet-container">
 			<div>
 				<div id="greet-behind-div">
@@ -70,35 +76,30 @@
 
 					<h1 class="gradient-text-3">FEATURED PROJECT</h1>
 					<div id="featured-project-container">
-						<h2>Untitled Project</h2>
+						<h2>Untitled Project (WIP)</h2>
 						<div id="featured-project-links-container">
 							<a target="_blank" href="">
 								<button>Visit site
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-										<path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/>
-									</svg>
+									<svg class="new-tab-svg"><use href="#new-tab-icon"></use></svg>
 								</button>
 							</a>
 							<a target="_blank" href="">
 								<button>GitHub repo
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-										<path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/>
-									</svg>
+									<svg class="new-tab-svg"><use href="#new-tab-icon"></use></svg>
 								</button>
 							</a>
 						</div>
 						
 						<div id="featured-project-description-container">
-							<p>I'm still working on this project. Will replace this with project description and the video below with project demo. (Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.)</p>
+							<p>I'm still working on this project. This section is just a placeholder for now. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 							<ul>
 								
-								<li>Developed using <a target="_blank" href="https://remix.run" class="link">Remix</a>.</li>
-								<li>Written in <a target="_blank" href="https://www.typescriptlang.org" class="link">TypeScript</a>.</li>
-								<li><a target="_blank" href="https://tailwindcss.com" class="link">Tailwind</a> for responsive & intuitive UI.</li>
-								<li>Authentication & database on <a target="_blank" href="https://supabase.com" class="link">Supabase</a>.</li>
-								<li>Handling payments with <a target="_blank" href="https://stripe.com" class="link">Stripe</a>.</li>
-								<li><a target="_blank" href="https://vitest.dev" class="link">Vitest</a> for unit & integration tests.</li>
-								<li>Containerized by <a target="_blank" href="https://www.docker.com" class="link">Docker</a>.</li>
+								<li>Developed with <a target="_blank" href="" class="link">tool-A</a> for reasons.</li>
+								<li><a target="_blank" href="" class="link">Tool-B</a> was definitely utilized.</li>
+								<li>Implemented <a target="_blank" href="" class="link">tool-C</a> for things.</li>
+								<li>Leveraged <a target="_blank" href="" class="link">tool-D</a> for another thing.</li>
+								<li>Employed both <a target="_blank" href="" class="link">tool-E</a> and <a target="_blank" href="" class="link">tool-F</a> to do stuffs.</li>
+
 							</ul>
 						</div>
 
@@ -111,6 +112,36 @@
 					</div>
 
 					<h1 class="gradient-text-4">OTHER PROJECTS</h1>
+					<div id="other-projects-container">
+						<p class="other-projects-item">
+							<a target="_blank" href=""><button>
+								Title
+								<svg class="new-tab-svg"><use href="#new-tab-icon"></use></svg>
+							</button></a>
+							tar tatasg afaf afadf afafd afdf <a target="_blank" href="" class="link">tool-F</a> af ssss.
+						</p>
+						<p class="other-projects-item">
+							<a target="_blank" href=""><button>
+								Title 44
+								<svg class="new-tab-svg"><use href="#new-tab-icon"></use></svg>
+							</button></a>
+							tar tatasg afaf afadf afafd afdf <a target="_blank" href="" class="link">tool-F</a> af ssss.
+						</p>
+						<p class="other-projects-item">
+							<a target="_blank" href=""><button>
+								Title 374
+								<svg class="new-tab-svg"><use href="#new-tab-icon"></use></svg>
+							</button></a>
+							tar tatasg afaf afadf afafd afdf <a target="_blank" href="" class="link">tool-F</a> af ssss.
+						</p>
+						<p class="other-projects-item">
+							<a target="_blank" href=""><button>
+								<span>Title 123 afvaf avsfafv as</span>
+								<svg class="new-tab-svg"><use href="#new-tab-icon"></use></svg>
+							</button></a>
+							tar tatasg tatasg afaf tatasg afaf afadf afafd afadf afafd afaf afadf afafd afdf <a target="_blank" href="" class="link">tool-F</a>.
+						</p>
+					</div>
 				</div>
 			</div>
 
@@ -155,16 +186,12 @@
 			<div id="social-links-container">
 				<a target="_blank" href="https://github.com/khanghy2130">
 					<button type="button">GitHub
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-							<path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/>
-						</svg>
+						<svg class="new-tab-svg"><use href="#new-tab-icon"></use></svg>
 					</button>
 				</a>
 				<a target="_blank" href="https://www.linkedin.com/in/hynguyendev">
 					<button type="button">LinkedIn
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-							<path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z"/>
-						</svg>
+						<svg class="new-tab-svg"><use href="#new-tab-icon"></use></svg>
 					</button>
 				</a>
 			</div>
@@ -177,11 +204,11 @@
 		<div id="tool-targeter-frame">
 			<p id="tool-targeter-text">.</p>
 		</div>
-
 	</main>
 
 
 
+	<script src="data.js"></script>
 	<script src="p5.min.js"></script>
 	<script src="script.js"></script>
 	<script src="sketch.js"></script>

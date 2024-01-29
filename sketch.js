@@ -228,7 +228,6 @@ function setup() {
     .getPropertyValue('--background-color2'));
     color2 = color(getComputedStyle(document.documentElement)
     .getPropertyValue('--background-color1'));
-    // color1 = color("#878f17");
 
     resetApp();
     pageReady();
