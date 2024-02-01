@@ -276,15 +276,13 @@ button:hover .new-tab-svg {
 #tool-targeter-text {
     background: var(--text-color1);
     color: var(--background-color1);
-    margin-top: max(-6vw, -48px);
+    margin-top: max(-8vw, -64px);
     padding: 0 min(1vw, 8px);
     border-radius: min(2vw, 16px);
-    font-size: min(4vw, 32px);
-    font-weight: bold;
+    font-size: min(5vw,40px);
 }
 
 /* FEATURED PROJECT */
-
 #featured-project-container {
     display: flex;
     flex-direction: column;
@@ -302,7 +300,7 @@ button:hover .new-tab-svg {
 #featured-project-links-container button {
     display: flex;
     align-items: center;
-    font-size: min(5vw, 28px);
+    font-size: min(5.5vw, 28px);
     margin-right: min(2vw, 16px);
     padding: min(0.5vw, 4px) min(3vw, 24px);
 }
@@ -311,7 +309,7 @@ button:hover .new-tab-svg {
     display: flex;
     flex-direction: row;
     padding: min(4vw, 32px) 0;
-    font-size: min(5vw, 24px);
+    font-size: min(5.5vw, 24px);
     color: var(--text-color2);
 }
 #featured-project-description-container > p{
@@ -342,8 +340,8 @@ button:hover .new-tab-svg {
     }
     #featured-project-description-container > ul{
         width: 90%;
+        padding: 4vw 0;
         padding-left: 5vw;
-        padding-top: 2vw;
     }
 }
 
@@ -355,16 +353,17 @@ button:hover .new-tab-svg {
     align-items: start;
 }
 .other-projects-item {
-    font-size: min(5vw, 28px);
+    font-size: min(5.5vw, 28px);
     color: var(--text-color2);
-    margin: min(3vw, 24px);
+    margin: min(2vw, 16px) 0;
 }
 .other-projects-item button {
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
-    font-size: min(5vw, 28px);
+    font-size: min(5.5vw, 28px);
     padding: 0 min(3vw, 24px);
+    margin-right: min(2vw, 16px); /* between self and description */
 }
 
 

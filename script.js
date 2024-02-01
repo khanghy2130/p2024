@@ -137,6 +137,62 @@ function getRandomToolIcon() {
 
 
 
+let hoveredProjectIndex = null;
+// create other-projects items from data
+const otherProjectsContainerEle = document.getElementById("other-projects-container");
+//////const otherProjectElements = [];
+for (let i=0; i < OTHER_PROJECTS.length; i++){
+    /*<p> 
+        <a> <button> (text) <svg/> </button> </a>
+        (text) OR <a> link </a>
+    </p>*/
+    const project = OTHER_PROJECTS[i];
+
+    const pEle = document.createElement("p");
+    pEle.classList.add("other-projects-item");
+    otherProjectsContainerEle.append(pEle);
+    
+    const buttonAnchorEle = document.createElement("a");
+    buttonAnchorEle.target = "_blank";
+    buttonAnchorEle.href = project.link;
+    pEle.appendChild(buttonAnchorEle); // add <a> to <p>
+
+    const buttonEle = document.createElement("button");
+    buttonEle.appendChild(document.createTextNode(project.title));
+    buttonAnchorEle.appendChild(buttonEle); // add <button> to <a>
+    // add cloned new-tab-svg
+    buttonEle.appendChild(
+        document.getElementsByClassName("new-tab-svg")[0].cloneNode(true)
+    );
+    
+    // description (add text / link)
+    for (let j=0; j < project.description.length; j++){
+        const descItem = project.description[j];
+        if (typeof descItem === "string"){
+            pEle.appendChild(document.createTextNode(descItem));
+        } 
+        else {
+            const linkAnchorEle = document.createElement("a");
+            linkAnchorEle.target = "_blank";
+            linkAnchorEle.href = descItem.link;
+            linkAnchorEle.innerText = descItem.text;
+            linkAnchorEle.classList.add("link");
+            pEle.appendChild(linkAnchorEle);
+        }
+    }
+
+    // otherProjectElements.push(pEle);
+    // // events
+    // pEle.addEventListener("mouseenter", () => {
+    //     hoveredProjectIndex = i;
+    // });
+    // pEle.addEventListener("mouseleave", () => {
+    //     hoveredProjectIndex = null;
+    // });
+}
+
+
+
 
 
 

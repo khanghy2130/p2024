@@ -53,3 +53,24 @@ const TOOLS_LIST = [
 ];
 
 
+const OTHER_PROJECTS = [
+    {
+        title: "project alpha",
+        link: "#",
+        imgSrc: "#",
+        description: [
+            "this is ",
+            { text: "a link", link: "#"},
+            "!"
+        ]
+    },
+    {
+        title: "project beta",
+        link: "#",
+        imgSrc: "#",
+        description: [
+            { text: "click here", link: "#"},
+            " :)"
+        ]
+    }
+];
