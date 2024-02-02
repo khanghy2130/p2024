@@ -98,7 +98,7 @@ button:hover {
     transition-property: color, background;
     transition-duration: 0.3s;
     color: var(--text-color3);
-    background: linear-gradient(to top, var(--text-color3) 50%, var(--background-color1) 50%);
+    background: linear-gradient(to top, var(--text-color3) 50%, transparent 50%);
     background-size: 100% 200%;
     background-position: left 0%;
 }
@@ -263,7 +263,7 @@ button:hover .new-tab-svg {
     position: absolute;
     border: min(1vw, 8px) var(--text-color1) solid;
     border-radius: min(3vw, 24px);
-    left: -150vh; /* hide away on load */
+    left: -100vw; /* hide away on load */
 
     display: flex;
     flex-direction: column;
@@ -350,12 +350,18 @@ button:hover .new-tab-svg {
 #other-projects-container {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: stretch;
+
 }
 .other-projects-item {
-    font-size: min(5.5vw, 28px);
     color: var(--text-color2);
-    margin: min(2vw, 16px) 0;
+    background-color: transparent;
+    transition: background 0.2s linear;
+    font-size: min(5.5vw, 28px);
+    padding: min(2vw, 16px);
+}
+.other-projects-item:hover {
+    background-color: var(--background-color2);
 }
 .other-projects-item button {
     display: inline-flex;
@@ -366,6 +372,28 @@ button:hover .new-tab-svg {
     margin-right: min(2vw, 16px); /* between self and description */
 }
 
+#other-projects-image-container {
+    pointer-events: none;
+    position: absolute;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+
+    transition-property: top, left, opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+    opacity: 1;
+    left: -50vw; 
+
+    height: min(50vh, 60vw);
+    width: min(50vh, 60vw);
+}
+#other-projects-image-container.hidden {
+    opacity: 0;
+}
+#other-projects-image {
+    transition: transform 0.3s linear;
+}
 
 /* WAVES */
 #top-wave-container, #bottom-wave-container {

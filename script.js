@@ -42,6 +42,7 @@ function updateScroll(){
 }
 
 
+
 // load tool icons
 const toolsContainer = document.getElementById("tools-container");
 TOOLS_LIST.forEach((tool) => {
@@ -140,7 +141,7 @@ function getRandomToolIcon() {
 let hoveredProjectIndex = null;
 // create other-projects items from data
 const otherProjectsContainerEle = document.getElementById("other-projects-container");
-//////const otherProjectElements = [];
+const otherProjectElements = [];
 for (let i=0; i < OTHER_PROJECTS.length; i++){
     /*<p> 
         <a> <button> (text) <svg/> </button> </a>
@@ -181,18 +182,44 @@ for (let i=0; i < OTHER_PROJECTS.length; i++){
         }
     }
 
-    // otherProjectElements.push(pEle);
-    // // events
-    // pEle.addEventListener("mouseenter", () => {
-    //     hoveredProjectIndex = i;
-    // });
-    // pEle.addEventListener("mouseleave", () => {
-    //     hoveredProjectIndex = null;
-    // });
+    otherProjectElements.push(pEle);
+    // events
+    pEle.addEventListener("mouseenter", () => {
+        hoveredProjectIndex = i;
+        OPImageContainer.classList.remove("hidden");
+        OPImage.src = project.imgSrc;
+    });
+    pEle.addEventListener("mouseleave", () => {
+        hoveredProjectIndex = null;
+        OPImageContainer.classList.add("hidden");
+    });
+    pEle.addEventListener("mousemove", updateCursorPosition);
+}
+function updateCursorPosition(e){
+    window.mouseX = e.clientX;
+    window.mouseY = e.clientY;
 }
 
 
+const OPImageContainer = document.getElementById("other-projects-image-container");
+const OPImage = document.getElementById("other-projects-image");
+function updateOtherProjectsImage(){
+    if (hoveredProjectIndex === null) return;
+    
+    const projectEle = otherProjectElements[hoveredProjectIndex];
+    const positionY = projectEle.offsetTop - OPImageContainer.offsetHeight;
+    const minX = projectEle.offsetLeft;
+    const maxX = projectEle.offsetLeft + projectEle.offsetWidth - OPImageContainer.offsetWidth;
+    const positionX =  Math.min(Math.max(window.mouseX - OPImageContainer.offsetWidth/2, minX), maxX);
+    
+    const middleX = projectEle.offsetLeft + projectEle.offsetWidth/2 - OPImageContainer.offsetWidth/2;
+    const imgTranslatedX = (OPImage.offsetWidth - OPImage.offsetHeight) * 
+                            (middleX - positionX) / (middleX - minX) / 2;
+    OPImage.style.transform = `translateX(${imgTranslatedX}px)`;
 
+    OPImageContainer.style.top = positionY + "px";
+    OPImageContainer.style.left = positionX + "px";
+}
 
 
 
@@ -203,7 +230,6 @@ function pageReady(){
 }
 
 
-
 window.addEventListener("load", () => {
     updateScroll();
     toolTargeter.setFrameSize();
@@ -211,6 +237,8 @@ window.addEventListener("load", () => {
     toolTargeter.setTargetedName(); // already has a random target
     toolTargeter.setAutoChangeTimer();
     toolTargeter.setToolNameUpdateTimer();
+
+    setInterval(updateOtherProjectsImage, 100);
 });
 
 window.addEventListener("resize", function(){

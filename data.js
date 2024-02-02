@@ -55,9 +55,18 @@ const TOOLS_LIST = [
 
 const OTHER_PROJECTS = [
     {
+        title: "project supreme",
+        link: "#",
+        imgSrc: "https://i.pinimg.com/originals/52/47/1e/52471e5ee4d2c953127091efac41de23.gif",
+        description: [
+            { text: "click here", link: "#"},
+            " ipsum dolor sit amet, sed do eiusmod tempor incididunt."
+        ]
+    },
+    {
         title: "project alpha",
         link: "#",
-        imgSrc: "#",
+        imgSrc: "https://i.pinimg.com/originals/61/3d/c7/613dc7781daf6494c16315c250b74373.gif",
         description: [
             "this is ",
             { text: "a link", link: "#"},
@@ -67,10 +76,37 @@ const OTHER_PROJECTS = [
     {
         title: "project beta",
         link: "#",
-        imgSrc: "#",
+        imgSrc: "https://i.pinimg.com/originals/8c/bb/9b/8cbb9b70ce1e8f18f721119a064c1c3b.gif",
         description: [
             { text: "click here", link: "#"},
-            " :)"
+            " sed do eiusmod tempor incididunt mod tempor incid um dolo."
+        ]
+    },
+    {
+        title: "project gamma",
+        link: "#",
+        imgSrc: "https://media0.giphy.com/media/KztT2c4u8mYYUiMKdJ/giphy.gif",
+        description: [
+            { text: "click here", link: "#"},
+            " ipsum dolor sit amet do eiusmod tempor."
+        ]
+    },
+    {
+        title: "project delta",
+        link: "#",
+        imgSrc: "https://i.pinimg.com/originals/c5/20/65/c52065a98b82cd0b11261327aa075151.gif",
+        description: [
+            { text: "click here", link: "#"},
+            " ipsum dolor sit amet do eiusmod."
+        ]
+    },
+    {
+        title: "project omega",
+        link: "#",
+        imgSrc: "https://i.pinimg.com/originals/c8/40/3a/c8403a9fe881b95a7973c08fbfc818c0.gif",
+        description: [
+            { text: "click here", link: "#"},
+            " ipsum dolor sit amet do eiusmod tempor incididunt."
         ]
     }
 ];
