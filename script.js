@@ -239,6 +239,11 @@ window.addEventListener("load", () => {
     toolTargeter.setToolNameUpdateTimer();
 
     setInterval(updateOtherProjectsImage, 100);
+
+    // preload project images
+    for (let i = 0; i < OTHER_PROJECTS.length; i++) {
+        (new Image()).src = OTHER_PROJECTS[i].imgSrc;
+    }
 });
 
 window.addEventListener("resize", function(){

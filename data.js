@@ -48,65 +48,92 @@ const TOOLS_LIST = [
         toolName: "MongoDB", iconSrc: "./tool-icons/MongoDB.png"
     },
     {
-        toolName: "Docker", iconSrc: "./tool-icons/Docker.png"
+        toolName: "Node.js", iconSrc: "./tool-icons/Nodejs.png"
     }
 ];
 
 
 const OTHER_PROJECTS = [
     {
-        title: "project supreme",
-        link: "#",
-        imgSrc: "https://i.pinimg.com/originals/52/47/1e/52471e5ee4d2c953127091efac41de23.gif",
+        title: "Spread Puzzle",
+        link: "https://spread-puzzle.onrender.com",
+        imgSrc: "./project-images/SpreadPuzzle.gif",
         description: [
-            { text: "click here", link: "#"},
-            " ipsum dolor sit amet, sed do eiusmod tempor incididunt."
+            "Multiplayer puzzle game (server might take time to start). Visit ",
+            { text: "GitHub repo", link: "https://github.com/khanghy2130/spread_puzzle"},
+            ". Watch ",
+            { text: "demo video", link: "https://youtu.be/Q57w2F60kAI"},
+            ".",
         ]
     },
     {
-        title: "project alpha",
-        link: "#",
-        imgSrc: "https://i.pinimg.com/originals/61/3d/c7/613dc7781daf6494c16315c250b74373.gif",
+        title: "Course G3C2",
+        link: "https://g3-chapter2.netlify.app",
+        imgSrc: "./project-images/G3C2.gif",
         description: [
-            "this is ",
-            { text: "a link", link: "#"},
-            "!"
+            "Freelance project. Teach kids to program a rover."
         ]
     },
     {
-        title: "project beta",
-        link: "#",
-        imgSrc: "https://i.pinimg.com/originals/8c/bb/9b/8cbb9b70ce1e8f18f721119a064c1c3b.gif",
+        title: "Course G2C8",
+        link: "https://g2-chapter8.netlify.app",
+        imgSrc: "./project-images/G2C8.gif",
         description: [
-            { text: "click here", link: "#"},
-            " sed do eiusmod tempor incididunt mod tempor incid um dolo."
+            "Freelance project. Teach kids to program Pong game."
         ]
     },
     {
-        title: "project gamma",
-        link: "#",
-        imgSrc: "https://media0.giphy.com/media/KztT2c4u8mYYUiMKdJ/giphy.gif",
+        title: "Mystery Treasure",
+        link: "https://mysterytreasure.netlify.app",
+        imgSrc: "./project-images/MysteryTreasure.gif",
         description: [
-            { text: "click here", link: "#"},
-            " ipsum dolor sit amet do eiusmod tempor."
+            "Original dueling card game."
         ]
     },
     {
-        title: "project delta",
-        link: "#",
-        imgSrc: "https://i.pinimg.com/originals/c5/20/65/c52065a98b82cd0b11261327aa075151.gif",
+        title: "Regions",
+        link: "https://editor.p5js.org/khanghy2130@gmail.com/full/S5PqJEaxB",
+        imgSrc: "./project-images/Regions.gif",
         description: [
-            { text: "click here", link: "#"},
-            " ipsum dolor sit amet do eiusmod."
+            "Original game that produces generative art."
         ]
     },
     {
-        title: "project omega",
-        link: "#",
-        imgSrc: "https://i.pinimg.com/originals/c8/40/3a/c8403a9fe881b95a7973c08fbfc818c0.gif",
+        title: "Shift",
+        link: "https://editor.p5js.org/khanghy2130@gmail.com/full/xwSpzx4Nj",
+        imgSrc: "./project-images/Shift.gif",
         description: [
-            { text: "click here", link: "#"},
-            " ipsum dolor sit amet do eiusmod tempor incididunt."
+            "Original mind-bending puzzler."
+        ]
+    },
+    {
+        title: "Laser Loop 3",
+        link: "https://editor.p5js.org/khanghy2130@gmail.com/full/Bk4e3ihrt",
+        imgSrc: "./project-images/LaserLoop3.gif",
+        description: [
+            "Original puzzler about laser on cube surface."
+        ]
+    },
+    {
+        title: "Warp",
+        link: "https://editor.p5js.org/khanghy2130@gmail.com/full/HAk3lyV_u",
+        imgSrc: "./project-images/Warp.gif",
+        description: [
+            "Rage game with phenomenal level design."
+        ]
+    },
+    {
+        title: "Tamsac",
+        link: "https://summer-2023.reactjam.com/games/summer-2023-tamsac",
+        imgSrc: "./project-images/Tamsac.gif",
+        description: [
+            "Multiplayer game on ",
+            { text: "Rune", link: "https://www.rune.ai"},
+            ". Made for  ",
+            { text: "React Jame Summer 2023", link: "https://summer-2023.reactjam.com"},
+            ". Watch ",
+            { text: "judges playing", link: "https://www.youtube.com/watch?v=5rvRg5nocD0&t=1484s"},
+            " (24:44 to 29:22)."
         ]
     }
 ];
