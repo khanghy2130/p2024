@@ -59,7 +59,7 @@ const OTHER_PROJECTS = [
         link: "https://spread-puzzle.onrender.com",
         imgSrc: "./project-images/SpreadPuzzle.gif",
         description: [
-            "Multiplayer puzzle game (server might take time to start). Visit ",
+            "Multiplayer puzzle game. Visit ",
             { text: "GitHub repo", link: "https://github.com/khanghy2130/spread_puzzle"},
             ". Watch ",
             { text: "demo video", link: "https://youtu.be/Q57w2F60kAI"},
@@ -130,7 +130,7 @@ const OTHER_PROJECTS = [
             "Multiplayer game on ",
             { text: "Rune", link: "https://www.rune.ai"},
             ". Made for  ",
-            { text: "React Jame Summer 2023", link: "https://summer-2023.reactjam.com"},
+            { text: "React Jam Summer 2023", link: "https://summer-2023.reactjam.com"},
             ". Watch ",
             { text: "judges playing", link: "https://www.youtube.com/watch?v=5rvRg5nocD0&t=1484s"},
             " (24:44 to 29:22)."
