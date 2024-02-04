@@ -230,7 +230,7 @@ function setup() {
     .getPropertyValue('--background-color1'));
 
     resetApp();
-    pageReady();
+    if (typeof onCanvasLoaded !== "undefined") onCanvasLoaded();
 }
 
 

@@ -223,10 +223,16 @@ function updateOtherProjectsImage(){
 
 
 
-function pageReady(){
-    
-
-    //// drop curtains
+function onCanvasLoaded(){ // called when p5.js setup() is done
+    const curtainDivs = document.querySelectorAll("#curtain-container > div");
+    curtainDivs.forEach((div, index) => {
+        setTimeout(() => {
+            div.classList.add("dropped");
+        }, index * 250); // delay betwen curtain
+    });
+    setTimeout(() => { // hide the entire curtain
+        document.getElementById("curtain-container").style.display = "none";
+    }, 1500);
 }
 
 
