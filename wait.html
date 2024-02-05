@@ -38,10 +38,6 @@
             overflow-x: hidden;
             font-family: "Kanit", sans-serif;
         }
-        #canvas-container {
-            position: fixed;
-            z-index: -100;
-        }
 
         main {
             display: flex;
@@ -57,7 +53,7 @@
             align-items: center;
         }
         main > div > p {
-            padding: min(2vw, 16px) min(5vw, 40px);
+            padding: min(3vw, 24px) min(5vw, 40px);
         }
 
         a {
@@ -99,10 +95,6 @@
 
 <body>
 
-    <div id="canvas-container">
-		<canvas id="bg-canvas"></canvas>
-	</div>
-
     <main>
         <div id="redirect-link-div">
             <p>Redirecting to <a class="link" id="site-url" href="#"></a></p>
@@ -115,8 +107,6 @@
             <p>Error: Unable to get server response. <a class="link" id="refresh-link"  href="#">Try refresh</a></p>
         </div>
     </main>
-
-
 
     <script>
         const searchParams = new URLSearchParams(window.location.search);
@@ -158,9 +148,6 @@
         });
 
     </script>
-    
-    <script src="./js/p5.min.js"></script>
-	<script src="./js/sketch.js"></script>
 
 </body>
 </html>
