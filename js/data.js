@@ -56,7 +56,7 @@ const TOOLS_LIST = [
 const OTHER_PROJECTS = [
     {
         title: "Spread Puzzle",
-        link: "https://spread-puzzle.onrender.com",
+        link: "./wait.html?key=Spread_Puzzle",
         imgSrc: "./project-images/SpreadPuzzle.gif",
         description: [
             "Multiplayer puzzle game. Visit ",
