@@ -153,6 +153,7 @@ button:hover .new-tab-svg {
 #greet-behind-div h1 {
     font-size: min(11vw, 88px);
     font-weight: lighter;
+    text-wrap: nowrap;
 }
 #greet-front-div {
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
@@ -166,11 +167,13 @@ button:hover .new-tab-svg {
     justify-content: start;
 }
 #greet-front-div h1 {
-    font-size: min(15vw, 120px);
+    font-size: min(14vw, 120px);
     margin: -0.4em 0 -0.2em 0;
+    text-wrap: nowrap;
 }
 #greet-front-div p {
-    font-size: min(5.5vw, 44px);
+    font-size: min(5vw, 44px);
+    text-wrap: nowrap;
 }
 
 #scroll-cue-div {
@@ -220,7 +223,6 @@ button:hover .new-tab-svg {
     justify-content: center;
 }
 #body-middle-section > div {
-    /* background-color: #222222; */
     width: min(90vw, 1000px);
     padding: min(5vw, 40px) 0;
     display: flex;
@@ -231,7 +233,7 @@ button:hover .new-tab-svg {
     color: transparent;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-    font-size: min(9vw, 72px);
+    font-size: min(8vw, 72px);
     margin-bottom: min(2vw, 16px);
 }
 #body-middle-section > div > h1:not(:first-child) {
@@ -288,7 +290,7 @@ button:hover .new-tab-svg {
     flex-direction: column;
 }
 #featured-project-container > h2 {
-    font-size: min(7vw, 40px);
+    font-size: min(6vw, 40px);
     font-weight: lighter;
 }
 
