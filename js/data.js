@@ -92,7 +92,7 @@ const OTHER_PROJECTS = [
     },
     {
         title: "Regions",
-        link: "https://editor.p5js.org/khanghy2130@gmail.com/full/S5PqJEaxB",
+        link: "https://editor.p5js.org/LogixIndie/full/S5PqJEaxB",
         imgSrc: "./project-images/Regions.gif",
         description: [
             "Original game that produces generative art."
@@ -100,7 +100,7 @@ const OTHER_PROJECTS = [
     },
     {
         title: "Shift",
-        link: "https://editor.p5js.org/khanghy2130@gmail.com/full/xwSpzx4Nj",
+        link: "https://editor.p5js.org/LogixIndie/full/xwSpzx4Nj",
         imgSrc: "./project-images/Shift.gif",
         description: [
             "Original mind-bending puzzler."
@@ -108,7 +108,7 @@ const OTHER_PROJECTS = [
     },
     {
         title: "Laser Loop 3",
-        link: "https://editor.p5js.org/khanghy2130@gmail.com/full/Bk4e3ihrt",
+        link: "https://editor.p5js.org/LogixIndie/full/Bk4e3ihrt",
         imgSrc: "./project-images/LaserLoop3.gif",
         description: [
             "Original puzzler about laser on cube surface."
@@ -116,7 +116,7 @@ const OTHER_PROJECTS = [
     },
     {
         title: "Warp",
-        link: "https://editor.p5js.org/khanghy2130@gmail.com/full/HAk3lyV_u",
+        link: "https://editor.p5js.org/LogixIndie/full/HAk3lyV_u",
         imgSrc: "./project-images/Warp.gif",
         description: [
             "Rage game with phenomenal level design."
