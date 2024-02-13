@@ -3,7 +3,7 @@
     --text-color2: #d3d3d3;
     --text-color3: #f3f65c;
     --background-color1: #1b1b1b;
-    --background-color2: #282828;
+    --background-color2: #2a2a2a;
     --scroll-progress-range: 600px; /* bigger means animation requires more scrolling */
     --gradient-line-width: min(0.8vw, 4px);
 }
@@ -445,7 +445,7 @@ button:hover .new-tab-svg {
     color: transparent;
     -webkit-background-clip: text !important;
     background-clip: text !important;
-    font-size: min(9vw, 72px);
+    font-size: min(8vw, 72px);
     text-align: center;
 }
 
