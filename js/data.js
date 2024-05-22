@@ -147,4 +147,10 @@ const OTHER_PROJECTS = [
       " (24:44 to 29:22).",
     ],
   },
+  {
+    title: "Chroma",
+    link: "https://logix-chroma.netlify.app",
+    imgSrc: "./project-images/Chroma.gif",
+    description: ["An engaging puzzler about placing pieces."],
+  },
 ];
