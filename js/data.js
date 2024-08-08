@@ -133,7 +133,7 @@ const OTHER_PROJECTS = [
     imgSrc: "./project-images/Tamsac.gif",
     description: [
       "Multiplayer game on ",
-      { text: "Rune", link: "https://www.rune.ai" },
+      { text: "Dusk", link: "https://dusk.gg" },
       ". Made for  ",
       {
         text: "React Jam Summer 2023",
@@ -152,5 +152,11 @@ const OTHER_PROJECTS = [
     link: "https://logix-chroma.netlify.app",
     imgSrc: "./project-images/Chroma.gif",
     description: ["An engaging puzzler about placing pieces."],
+  },
+  {
+    title: "Laser Loop 4",
+    link: "https://logix-laserloop4.netlify.app",
+    imgSrc: "./project-images/LaserLoop4.gif",
+    description: ["A procedural puzzler with laser."],
   },
 ];
