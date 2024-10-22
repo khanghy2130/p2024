@@ -41,11 +41,6 @@
         font-family: "Kanit", sans-serif;
       }
 
-      #canvas-container {
-        position: fixed;
-        z-index: -100;
-      }
-
       main {
         display: flex;
         flex-direction: column;
@@ -106,9 +101,6 @@
   </head>
 
   <body>
-    <div id="canvas-container">
-      <canvas id="bg-canvas"></canvas>
-    </div>
     <main>
       <div id="redirect-link-div">
         <p>Redirecting to <a class="link" id="site-url" href="#"></a></p>
@@ -126,8 +118,6 @@
       </div>
     </main>
 
-    <script src="./js/p5.min.js"></script>
-    <script src="./js/sketch.js"></script>
     <script>
       const pathname = location.pathname;
 
