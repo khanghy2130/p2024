@@ -41,6 +41,11 @@
         font-family: "Kanit", sans-serif;
       }
 
+      #canvas-container {
+        position: fixed;
+        z-index: -100;
+      }
+
       main {
         display: flex;
         flex-direction: column;
@@ -56,6 +61,7 @@
       }
       main > div > p {
         padding: min(3vw, 24px) min(5vw, 40px);
+        max-width: 20em;
       }
 
       a {
@@ -100,6 +106,9 @@
   </head>
 
   <body>
+    <div id="canvas-container">
+      <canvas id="bg-canvas"></canvas>
+    </div>
     <main>
       <div id="redirect-link-div">
         <p>Redirecting to <a class="link" id="site-url" href="#"></a></p>
@@ -112,51 +121,57 @@
         </p>
       </div>
       <div id="error-div" style="display: none">
-        <p>
-          Error: Unable to get server response.
-          <a class="link" id="refresh-link" href="#">Try refresh</a>
-        </p>
+        <p>Error: Unable to get server response.</p>
+        <a class="link" id="refresh-link" href="#">Try refresh</a>
       </div>
     </main>
 
+    <script src="./js/p5.min.js"></script>
+    <script src="./js/sketch.js"></script>
     <script>
-      // const searchParams = new URLSearchParams(window.location.search);
-      // let linkKey = searchParams.get('key');
+      const pathname = location.pathname;
 
-      // const links = {
-      //     "Spread_Puzzle": {
-      //         siteUrl: "https://spread-puzzle.onrender.com",
-      //         targetImageUrl: "https://spread-puzzle.onrender.com/static/media/title_img.5dde1a95.png"
-      //     }
-      // };
+      const projects = {
+        "/spreadpuzzle": {
+          siteUrl: "https://spread-puzzle.onrender.com",
+          targetImageUrl:
+            "https://spread-puzzle.onrender.com/static/media/title_img.5dde1a95.png",
+        },
+        "/toyshop": {
+          siteUrl: "https://toyshop-jg0k.onrender.com",
+          targetImageUrl:
+            "https://toyshop-jg0k.onrender.com/build/_assets/logo-J6DVB4AM.png",
+        },
+      };
 
-      // // set default key if no link data found
-      // console.log("key: " + linkKey)
-      // if (!links[linkKey]) linkKey = "Spread_Puzzle";
+      // fallback to /toyshop
+      const selectedProject = projects[pathname] || projects["/toyshop"];
 
-      // // set link text
-      // const linkText = document.getElementById("site-url");
-      // linkText.innerText = links[linkKey].siteUrl;
-      // linkText.href = links[linkKey].siteUrl;
+      // set link text
+      const linkText = document.getElementById("site-url");
+      linkText.innerText = selectedProject.siteUrl;
+      linkText.href = selectedProject.siteUrl;
 
-      // const targetImage = new Image();
-      // targetImage.src = links[linkKey].targetImageUrl;
-      // // targetImage.src = "trigger error";
+      const targetImage = new Image();
+      targetImage.src = selectedProject.targetImageUrl;
+      /// targetImage.src = "trigger error";
 
-      // // redirect to link when image loaded
-      // targetImage.onload = function(){
-      //     window.location.href = links[linkKey].siteUrl;
-      // };
-      // targetImage.onerror = function(){
-      //     document.getElementById("wait-div").style.display = "none";
-      //     document.getElementById("error-div").style.display = "flex";
-      // };
+      // redirect to link when image loaded
+      targetImage.onload = function () {
+        window.location.href = selectedProject.siteUrl;
+      };
+      targetImage.onerror = function () {
+        document.getElementById("wait-div").style.display = "none";
+        document.getElementById("error-div").style.display = "flex";
+      };
 
-      // // refresh link event
-      // document.getElementById("refresh-link").addEventListener("click", (event) => {
-      //     event.preventDefault();
-      //     location.reload();
-      // });
+      // refresh link event
+      document
+        .getElementById("refresh-link")
+        .addEventListener("click", (event) => {
+          event.preventDefault();
+          location.reload();
+        });
     </script>
   </body>
 </html>

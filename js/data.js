@@ -72,7 +72,7 @@ const TOOLS_LIST = [
 const OTHER_PROJECTS = [
   {
     title: "Spread Puzzle",
-    link: "./wait.html?key=Spread_Puzzle",
+    link: "./spreadpuzzle",
     imgSrc: "./project-images/SpreadPuzzle.gif",
     description: [
       "Multiplayer puzzle game. Visit ",
