@@ -154,16 +154,16 @@
         // fallback to /toyshop
         const selectedProject = projects[pathname] || projects["/toyshop"];
 
+        // set link text
+        const linkText = document.getElementById("site-url");
+        linkText.innerText = selectedProject.siteUrl;
+        linkText.href = selectedProject.siteUrl;
+
         // immediate redirect if targetImageUrl is null
         if (selectedProject.targetImageUrl === null) {
           window.location.href = selectedProject.siteUrl;
           return;
         }
-
-        // set link text
-        const linkText = document.getElementById("site-url");
-        linkText.innerText = selectedProject.siteUrl;
-        linkText.href = selectedProject.siteUrl;
 
         const targetImage = new Image();
         targetImage.src = selectedProject.targetImageUrl;
