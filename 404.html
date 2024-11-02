@@ -108,7 +108,7 @@
       <div id="wait-div">
         <span id="spinner"></span>
         <p>
-          Please wait, the server could take over 1 minute to start up if it's
+          Please wait, the server could take a minute to start up if it's
           inactive.
         </p>
       </div>
@@ -132,36 +132,60 @@
           targetImageUrl:
             "https://toyshop-jg0k.onrender.com/build/_assets/logo-J6DVB4AM.png",
         },
+        "/g3c2": {
+          siteUrl: "https://g3-chapter2.netlify.app",
+          targetImageUrl: null,
+        },
+        "/shift": {
+          siteUrl: "https://logix-shift.netlify.app",
+          targetImageUrl: null,
+        },
+        "/chroma": {
+          siteUrl: "https://logix-chroma.netlify.app",
+          targetImageUrl: null,
+        },
+        "/laserloop4": {
+          siteUrl: "https://logix-laserloop4.netlify.app",
+          targetImageUrl: null,
+        },
       };
 
-      // fallback to /toyshop
-      const selectedProject = projects[pathname] || projects["/toyshop"];
+      (function () {
+        // fallback to /toyshop
+        const selectedProject = projects[pathname] || projects["/toyshop"];
 
-      // set link text
-      const linkText = document.getElementById("site-url");
-      linkText.innerText = selectedProject.siteUrl;
-      linkText.href = selectedProject.siteUrl;
+        // immediate redirect if targetImageUrl is null
+        if (selectedProject.targetImageUrl === null) {
+          window.location.href = selectedProject.siteUrl;
+          return;
+        }
 
-      const targetImage = new Image();
-      targetImage.src = selectedProject.targetImageUrl;
-      /// targetImage.src = "trigger error";
+        // set link text
+        const linkText = document.getElementById("site-url");
+        linkText.innerText = selectedProject.siteUrl;
+        linkText.href = selectedProject.siteUrl;
 
-      // redirect to link when image loaded
-      targetImage.onload = function () {
-        window.location.href = selectedProject.siteUrl;
-      };
-      targetImage.onerror = function () {
-        document.getElementById("wait-div").style.display = "none";
-        document.getElementById("error-div").style.display = "flex";
-      };
+        const targetImage = new Image();
+        targetImage.src = selectedProject.targetImageUrl;
+        /// targetImage.src = "trigger error";
 
-      // refresh link event
-      document
-        .getElementById("refresh-link")
-        .addEventListener("click", (event) => {
-          event.preventDefault();
-          location.reload();
-        });
+        // redirect to link when image loaded
+        targetImage.onload = function () {
+          window.location.href = selectedProject.siteUrl;
+        };
+        targetImage.onerror = function () {
+          document.getElementById("wait-div").style.display = "none";
+          document.getElementById("error-div").style.display = "flex";
+        };
+
+        // refresh link event
+        document
+          .getElementById("refresh-link")
+          .addEventListener("click", (event) => {
+            event.preventDefault();
+            location.reload();
+          });
+      })();
     </script>
   </body>
 </html>

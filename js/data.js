@@ -87,7 +87,7 @@ const OTHER_PROJECTS = [
   },
   {
     title: "Course G3C2",
-    link: "https://g3-chapter2.netlify.app",
+    link: "./g3c2",
     imgSrc: "./project-images/G3C2.gif",
     description: ["Freelance project. Teach kids to program a rover."],
   },
@@ -111,7 +111,7 @@ const OTHER_PROJECTS = [
   // },
   {
     title: "Shift",
-    link: "https://logix-shift.netlify.app",
+    link: "./shift",
     imgSrc: "./project-images/Shift.gif",
     description: ["Original mind-bending puzzler."],
   },
@@ -149,13 +149,13 @@ const OTHER_PROJECTS = [
   // },
   {
     title: "Chroma",
-    link: "https://logix-chroma.netlify.app",
+    link: "./chroma",
     imgSrc: "./project-images/Chroma.gif",
     description: ["An engaging puzzler about placing pieces."],
   },
   {
     title: "Laser Loop 4",
-    link: "https://logix-laserloop4.netlify.app",
+    link: "./laserloop4",
     imgSrc: "./project-images/LaserLoop4.gif",
     description: ["A procedural puzzler with laser."],
   },
