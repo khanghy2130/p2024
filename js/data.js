@@ -159,4 +159,10 @@ const OTHER_PROJECTS = [
     imgSrc: "./project-images/LaserLoop4.gif",
     description: ["A procedural puzzler with laser."],
   },
+  {
+    title: "Supercharge",
+    link: "./supercharge",
+    imgSrc: "./project-images/Supercharge.gif",
+    description: ["A tactics game where you move twice a turn using chess pieces. External credits to 2 other coders for the custom font and the easter egg."],
+  },
 ];
