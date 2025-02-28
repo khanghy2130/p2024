@@ -548,7 +548,7 @@ footer > p {
   font-size: min(5vw, 24px);
 }
 
-#curtain-container {
+/* #curtain-container {
   pointer-events: none;
   display: flex;
   justify-content: center;
@@ -565,7 +565,7 @@ footer > p {
 }
 #curtain-container.hidden {
   opacity: 0;
-}
+} */
 
 #spinner {
   width: min(10vw, 64px);
