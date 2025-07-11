@@ -127,26 +127,6 @@ const OTHER_PROJECTS = [
   //   imgSrc: "./project-images/Warp.gif",
   //   description: ["Rage game with phenomenal level design."],
   // },
-  // {
-  //   title: "Tamsac",
-  //   link: "https://summer-2023.reactjam.com/games/summer-2023-tamsac",
-  //   imgSrc: "./project-images/Tamsac.gif",
-  //   description: [
-  //     "Multiplayer game on ",
-  //     { text: "Dusk", link: "https://dusk.gg" },
-  //     ". Made for  ",
-  //     {
-  //       text: "React Jam Summer 2023",
-  //       link: "https://summer-2023.reactjam.com",
-  //     },
-  //     ". Watch ",
-  //     {
-  //       text: "judges playing",
-  //       link: "https://www.youtube.com/watch?v=5rvRg5nocD0&t=1484s",
-  //     },
-  //     " (24:44 to 29:22).",
-  //   ],
-  // },
   {
     title: "Chroma",
     link: "./chroma",
@@ -163,6 +143,16 @@ const OTHER_PROJECTS = [
     title: "Supercharge",
     link: "./supercharge",
     imgSrc: "./project-images/Supercharge.gif",
-    description: ["A tactics game where you move twice a turn using chess pieces. External credits to 2 other coders for the custom font and the easter egg."],
+    description: [
+      "A tactics game where you move twice a turn using chess pieces. External credits to 2 other coders for the custom font and the easter egg.",
+    ],
+  },
+  {
+    title: "Zodiac Duality",
+    link: "./zodiacduality",
+    imgSrc: "./project-images/ZodiacDuality.gif",
+    description: [
+      "A tableau building game with the theme of Chinese astrology.",
+    ],
   },
 ];

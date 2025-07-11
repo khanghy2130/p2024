@@ -135,23 +135,21 @@
         },
         "/g3c2": {
           siteUrl: "https://g3-chapter2.netlify.app",
-          targetImageUrl: null,
         },
         "/shift": {
           siteUrl: "https://logix-shift.netlify.app",
-          targetImageUrl: null,
         },
         "/chroma": {
           siteUrl: "https://logix-chroma.netlify.app",
-          targetImageUrl: null,
         },
         "/laserloop4": {
           siteUrl: "https://logix-laserloop4.netlify.app",
-          targetImageUrl: null,
         },
         "/supercharge": {
           siteUrl: "https://logix-supercharge.netlify.app",
-          targetImageUrl: null,
+        },
+        "/zodiacduality": {
+          siteUrl: "https://logix-zodiacduality.netlify.app",
         },
       };
 
@@ -164,8 +162,8 @@
         linkText.innerText = selectedProject.siteUrl;
         linkText.href = selectedProject.siteUrl;
 
-        // immediate redirect if targetImageUrl is null
-        if (selectedProject.targetImageUrl === null) {
+        // immediate redirect if targetImageUrl is not a string
+        if (typeof selectedProject.targetImageUrl !== "string") {
           window.location.href = selectedProject.siteUrl;
           return;
         }
