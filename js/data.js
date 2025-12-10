@@ -155,4 +155,12 @@ const OTHER_PROJECTS = [
       "A tableau building game with the theme of Chinese astrology.",
     ],
   },
+  {
+    title: "Tetromino Gold",
+    link: "./tetrominogold",
+    imgSrc: "./project-images/TetrominoGold.gif",
+    description: [
+      "An original polyomino game.",
+    ],
+  },
 ];
