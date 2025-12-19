@@ -113,7 +113,7 @@ const OTHER_PROJECTS = [
     title: "Shift",
     link: "./shift",
     imgSrc: "./project-images/Shift.gif",
-    description: ["Original mind-bending puzzler."],
+    description: ["Original mind-bending sliding puzzler."],
   },
   // {
   //   title: "Laser Loop 3",
@@ -131,7 +131,7 @@ const OTHER_PROJECTS = [
     title: "Chroma",
     link: "./chroma",
     imgSrc: "./project-images/Chroma.gif",
-    description: ["An engaging puzzler about placing pieces."],
+    description: ["An engaging puzzler about placing pieces and scaling score."],
   },
   {
     title: "Laser Loop 4",
@@ -144,7 +144,7 @@ const OTHER_PROJECTS = [
     link: "./supercharge",
     imgSrc: "./project-images/Supercharge.gif",
     description: [
-      "A tactics game where you move twice a turn using chess pieces. External credits to 2 other coders for the custom font and the easter egg.",
+      "A tactics game where you move twice a turn using chess pieces.",
     ],
   },
   {
@@ -160,7 +160,7 @@ const OTHER_PROJECTS = [
     link: "./tetrominogold",
     imgSrc: "./project-images/TetrominoGold.gif",
     description: [
-      "An original polyomino game.",
+      "A polyomino game on cube surface.",
     ],
   },
 ];
