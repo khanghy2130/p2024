@@ -113,7 +113,9 @@ const OTHER_PROJECTS = [
     title: "Shift",
     link: "./shift",
     imgSrc: "./project-images/Shift.gif",
-    description: ["Original mind-bending sliding puzzler."],
+    description: [
+      "Original mind-shifting puzzler on Reddit. Featuring daily challenges with leaderboards.",
+    ],
   },
   // {
   //   title: "Laser Loop 3",
@@ -131,7 +133,9 @@ const OTHER_PROJECTS = [
     title: "Chroma",
     link: "./chroma",
     imgSrc: "./project-images/Chroma.gif",
-    description: ["An engaging puzzler about placing pieces and scaling score."],
+    description: [
+      "An engaging puzzler about placing pieces and scaling score.",
+    ],
   },
   {
     title: "Laser Loop 4",
@@ -159,8 +163,14 @@ const OTHER_PROJECTS = [
     title: "Tetromino Gold",
     link: "./tetrominogold",
     imgSrc: "./project-images/TetrominoGold.gif",
+    description: ["A polyomino game on cube surface."],
+  },
+  {
+    title: "Inspire",
+    link: "./inspire",
+    imgSrc: "./project-images/Inspire.gif",
     description: [
-      "A polyomino game on cube surface.",
+      "An original card game based on the idea of chaining inspiration.",
     ],
   },
 ];
