@@ -75,7 +75,7 @@ const OTHER_PROJECTS = [
     link: "./spreadpuzzle",
     imgSrc: "./project-images/SpreadPuzzle.gif",
     description: [
-      "Multiplayer puzzle game. Visit ",
+      "Multiplayer procedural puzzler, featuring all three regular tilings. Visit ",
       {
         text: "GitHub repo",
         link: "https://github.com/khanghy2130/spread_puzzle",
@@ -89,7 +89,9 @@ const OTHER_PROJECTS = [
     title: "Course G3C2",
     link: "./g3c2",
     imgSrc: "./project-images/G3C2.gif",
-    description: ["Freelance project. Teach kids to program a rover."],
+    description: [
+      "Freelance project. An educational program for kids on programming a rover.",
+    ],
   },
   // {
   //   title: "Course G2C8",
@@ -114,7 +116,7 @@ const OTHER_PROJECTS = [
     link: "./shift",
     imgSrc: "./project-images/Shift.gif",
     description: [
-      "Original mind-shifting puzzler on Reddit. Featuring daily challenges with leaderboards.",
+      "Original puzzler on a  hyperbolic-inspired grid. Featuring daily challenges with leaderboards.",
     ],
   },
   // {
@@ -134,21 +136,23 @@ const OTHER_PROJECTS = [
     link: "./chroma",
     imgSrc: "./project-images/Chroma.gif",
     description: [
-      "An engaging puzzler about placing pieces and scaling score.",
+      "Original puzzler focused on spatial placement and score scaling.",
     ],
   },
   {
     title: "Laser Loop 4",
     link: "./laserloop4",
     imgSrc: "./project-images/LaserLoop4.gif",
-    description: ["A procedural puzzler with laser."],
+    description: [
+      "Original procedural puzzler with laser mechanics on a sphere.",
+    ],
   },
   {
     title: "Supercharge",
     link: "./supercharge",
     imgSrc: "./project-images/Supercharge.gif",
     description: [
-      "A tactics game where you move twice a turn using chess pieces.",
+      "Original tactics game where you move twice a turn using chess pieces.",
     ],
   },
   {
@@ -156,21 +160,19 @@ const OTHER_PROJECTS = [
     link: "./zodiacduality",
     imgSrc: "./project-images/ZodiacDuality.gif",
     description: [
-      "A tableau building game with the theme of Chinese astrology.",
+      "Original tableau building game themed around Chinese astrology.",
     ],
   },
   {
     title: "Tetromino Gold",
     link: "./tetrominogold",
     imgSrc: "./project-images/TetrominoGold.gif",
-    description: ["A polyomino game on cube surface."],
+    description: ["Original polyomino game played on cube surface."],
   },
   {
     title: "Inspire",
     link: "./inspire",
     imgSrc: "./project-images/Inspire.gif",
-    description: [
-      "An original card game based on the idea of chaining inspiration.",
-    ],
+    description: ["Original card game based on the idea inspiring others."],
   },
 ];
