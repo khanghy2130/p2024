@@ -20,6 +20,10 @@ const TOOLS_LIST = [
     iconSrc: "./tool-icons/TypeScript.png",
   },
   {
+    toolName: "Python",
+    iconSrc: "./tool-icons/Python.png",
+  },
+  {
     toolName: "React",
     iconSrc: "./tool-icons/React.png",
   },
@@ -52,6 +56,10 @@ const TOOLS_LIST = [
     iconSrc: "./tool-icons/Socketio.png",
   },
   {
+    toolName: "Sanity",
+    iconSrc: "./tool-icons/Sanity.png",
+  },
+  {
     toolName: "Supabase",
     iconSrc: "./tool-icons/Supabase.png",
   },
@@ -75,7 +83,7 @@ const OTHER_PROJECTS = [
     link: "./spreadpuzzle",
     imgSrc: "./project-images/SpreadPuzzle.gif",
     description: [
-      "Multiplayer procedural puzzler, featuring all three regular tilings. Visit ",
+      "Multiplayer procedural puzzler, featuring live chat and customisable puzzle generation. Visit ",
       {
         text: "GitHub repo",
         link: "https://github.com/khanghy2130/spread_puzzle",
@@ -116,7 +124,7 @@ const OTHER_PROJECTS = [
     link: "./shift",
     imgSrc: "./project-images/Shift.gif",
     description: [
-      "Original puzzler on a  hyperbolic-inspired grid. Featuring daily challenges with leaderboards.",
+      "Original puzzler on a grid inspired by hyperbolic tiling. Featuring daily challenges with leaderboards.",
     ],
   },
   // {
@@ -136,7 +144,9 @@ const OTHER_PROJECTS = [
     link: "./chroma",
     imgSrc: "./project-images/Chroma.gif",
     description: [
-      "Original puzzler focused on spatial placement and score scaling.",
+      "Original puzzler focused on spatial placement and score scaling. Visit ",
+      { text: "Github repo", link: "https://github.com/khanghy2130/Chroma" },
+      ".",
     ],
   },
   {
@@ -144,7 +154,12 @@ const OTHER_PROJECTS = [
     link: "./laserloop4",
     imgSrc: "./project-images/LaserLoop4.gif",
     description: [
-      "Original procedural puzzler with laser mechanics on a sphere.",
+      "Original procedural puzzler with laser mechanics on a geodesic polyhedron. Visit ",
+      {
+        text: "Github repo",
+        link: "https://github.com/khanghy2130/Laser-Loop-4",
+      },
+      ".",
     ],
   },
   {
@@ -152,7 +167,12 @@ const OTHER_PROJECTS = [
     link: "./supercharge",
     imgSrc: "./project-images/Supercharge.gif",
     description: [
-      "Original tactics game where you move twice a turn using chess pieces.",
+      "Original tactics game where you move twice a turn using chess pieces. Visit ",
+      {
+        text: "Github repo",
+        link: "https://github.com/khanghy2130/Supercharge",
+      },
+      ".",
     ],
   },
   {
@@ -160,19 +180,38 @@ const OTHER_PROJECTS = [
     link: "./zodiacduality",
     imgSrc: "./project-images/ZodiacDuality.gif",
     description: [
-      "Original tableau building game themed around Chinese astrology.",
+      "Original tableau building game themed around Chinese astrology. Visit ",
+      {
+        text: "Github repo",
+        link: "https://github.com/khanghy2130/zodiac-duality",
+      },
+      ".",
     ],
   },
   {
     title: "Tetromino Gold",
     link: "./tetrominogold",
     imgSrc: "./project-images/TetrominoGold.gif",
-    description: ["Original polyomino game played on cube surface."],
+    description: [
+      "Original polyomino game played on cube surface. Visit ",
+      {
+        text: "Github repo",
+        link: "https://github.com/khanghy2130/Tetromino-Gold",
+      },
+      ".",
+    ],
   },
   {
     title: "Inspire",
     link: "./inspire",
     imgSrc: "./project-images/Inspire.gif",
-    description: ["Original card game based on the idea inspiring others."],
+    description: [
+      "Original card game based on the idea of inspiring others. Visit ",
+      {
+        text: "Github repo",
+        link: "https://github.com/khanghy2130/Inspire",
+      },
+      ".",
+    ],
   },
 ];
