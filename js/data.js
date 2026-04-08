@@ -36,7 +36,7 @@ const TOOLS_LIST = [
     iconSrc: "./tool-icons/Remix.png",
   },
   {
-    toolName: "Tailwind",
+    toolName: "TailwindCSS",
     iconSrc: "./tool-icons/Tailwind.png",
   },
   {
@@ -83,13 +83,8 @@ const OTHER_PROJECTS = [
     link: "./spreadpuzzle",
     imgSrc: "./project-images/SpreadPuzzle.gif",
     description: [
-      "Multiplayer procedural puzzler, featuring live chat and customisable puzzle generation. Visit ",
-      {
-        text: "GitHub repo",
-        link: "https://github.com/khanghy2130/spread_puzzle",
-      },
-      ". Watch ",
-      { text: "demo video", link: "https://youtu.be/Q57w2F60kAI" },
+      "Multiplayer procedural puzzler. Featuring live chat and customisable puzzle generation. ",
+      { text: "Watch demo", link: "https://youtu.be/Q57w2F60kAI" },
       ".",
     ],
   },
@@ -144,9 +139,7 @@ const OTHER_PROJECTS = [
     link: "./chroma",
     imgSrc: "./project-images/Chroma.gif",
     description: [
-      "Original puzzler focused on spatial placement and score scaling. Visit ",
-      { text: "Github repo", link: "https://github.com/khanghy2130/Chroma" },
-      ".",
+      "Original puzzler focused on spatial placement and score scaling.",
     ],
   },
   {
@@ -154,12 +147,7 @@ const OTHER_PROJECTS = [
     link: "./laserloop4",
     imgSrc: "./project-images/LaserLoop4.gif",
     description: [
-      "Original procedural puzzler with laser mechanics on a geodesic polyhedron. Visit ",
-      {
-        text: "Github repo",
-        link: "https://github.com/khanghy2130/Laser-Loop-4",
-      },
-      ".",
+      "Original procedural puzzler with laser mechanics on a geodesic polyhedron.",
     ],
   },
   {
@@ -167,12 +155,7 @@ const OTHER_PROJECTS = [
     link: "./supercharge",
     imgSrc: "./project-images/Supercharge.gif",
     description: [
-      "Original tactics game where you move twice a turn using chess pieces. Visit ",
-      {
-        text: "Github repo",
-        link: "https://github.com/khanghy2130/Supercharge",
-      },
-      ".",
+      "Original tactics game where you move twice a turn using chess pieces.",
     ],
   },
   {
@@ -180,38 +163,19 @@ const OTHER_PROJECTS = [
     link: "./zodiacduality",
     imgSrc: "./project-images/ZodiacDuality.gif",
     description: [
-      "Original tableau building game themed around Chinese astrology. Visit ",
-      {
-        text: "Github repo",
-        link: "https://github.com/khanghy2130/zodiac-duality",
-      },
-      ".",
+      "Original tableau building game themed around Chinese astrology.",
     ],
   },
   {
     title: "Tetromino Gold",
     link: "./tetrominogold",
     imgSrc: "./project-images/TetrominoGold.gif",
-    description: [
-      "Original polyomino game played on cube surface. Visit ",
-      {
-        text: "Github repo",
-        link: "https://github.com/khanghy2130/Tetromino-Gold",
-      },
-      ".",
-    ],
+    description: ["Original polyomino game played on cube surface."],
   },
   {
     title: "Inspire",
     link: "./inspire",
     imgSrc: "./project-images/Inspire.gif",
-    description: [
-      "Original card game based on the idea of inspiring others. Visit ",
-      {
-        text: "Github repo",
-        link: "https://github.com/khanghy2130/Inspire",
-      },
-      ".",
-    ],
+    description: ["Original card game based on the idea of inspiring others."],
   },
 ];
