@@ -93,7 +93,7 @@ const OTHER_PROJECTS = [
     link: "./g3c2",
     imgSrc: "./project-images/G3C2.gif",
     description: [
-      "Freelance project. An educational program for kids on programming a rover.",
+      "Past freelance project. An educational program for kids on programming a rover.",
     ],
   },
   // {
