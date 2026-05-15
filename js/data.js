@@ -119,7 +119,7 @@ const OTHER_PROJECTS = [
     link: "./shift",
     imgSrc: "./project-images/Shift.gif",
     description: [
-      "Original puzzler on a grid inspired by hyperbolic tiling. Featuring daily challenges with leaderboards.",
+      "Original puzzler on a grid inspired by hyperbolic tiling. Featuring daily challenges with leaderboards. Reached an all-time high of 40,000 weekly visitors.",
     ],
   },
   // {
