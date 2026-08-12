@@ -24,6 +24,10 @@ const TOOLS_LIST = [
     iconSrc: "./tool-icons/Python.png",
   },
   {
+    toolName: "Svelte",
+    iconSrc: "./tool-icons/Svelte.png",
+  },
+  {
     toolName: "React",
     iconSrc: "./tool-icons/React.png",
   },
